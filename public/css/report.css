@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Public Sans';
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    src: url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,200;0,400;0,700;1,100&display=swap') format("truetype");
+}
+body {
+    font-family: Public Sans, sans-serif;
+}
+table {
+    width: 100%;
+    font-size: 17px;
+}
+
+table thead {
+    background-color: rgb(99, 211, 123);
+}
+
+table, thead, tbody, tr, th, td {
+    border: 0.3px solid rgb(46, 46, 46);
+    border-spacing: 0;
+}
+
+table thead tr th {
+    padding: 11px 5px;
+}
+
+table tbody tr td {
+    padding: 5px;
+}
+
+#pricelist-table thead tr th:nth-child(1) {
+    width: 50px;
+    text-align: center;
+}
+
+#pricelist-table tbody tr td:nth-child(2) {
+    width: 350px;
+}
+
+#pricelist-table thead tr th:nth-child(2) {
+    text-align: left;
+}
+
+#pricelist-table tbody tr td:nth-child(3) {
+    text-align: center;
+}
+
+#pricelist-table tbody tr td:nth-child(1), #pricelist-table tbody tr td:nth-child(4), #pricelist-table tbody tr td:nth-child(5) {
+    text-align: center;
+}
+#pricelist-table tbody tr td:nth-child(6), #pricelist-table tbody tr td:nth-child(7), #pricelist-table tbody tr td:nth-child(8), #pricelist-table tbody tr td:nth-child(9), #pricelist-table tbody tr td:nth-child(10) {
+    text-align: left;
+}
+
+
+#pricelist-table thead tr th:nth-child(6), #pricelist-table thead tr th:nth-child(7), #pricelist-table thead tr th:nth-child(8), #pricelist-table thead tr th:nth-child(9), #pricelist-table thead tr th:nth-child(10) {
+    text-align: left;
+}
