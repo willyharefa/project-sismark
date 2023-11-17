@@ -64,9 +64,10 @@ class QuotationController extends Controller
      */
     public function show(Quotation $quotation)
     {
-        $products = StockMaster::all();
-        $pricelists = Pricelist::with('stock_master', 'city')->get();
-        return view('pages.transaction.quotation.item-quotation', compact('quotation', 'products', 'pricelists'));
+        // dd($quotation);
+
+        $pricelists = Pricelist::where('type_expedition', $quotation->type_expedition)->with('stock_master', 'city')->get();
+        return view('pages.transaction.quotation.item-quotation', compact('quotation', 'pricelists'));
     }
 
     /**
@@ -102,6 +103,11 @@ class QuotationController extends Controller
     {
         $data = Pricelist::where('stock_master_id', $id)->get();
         return response()->json($data);
+    }
+
+    public function storeItemQuo(Request $request, Pricelist  $pricelist)
+    {
+        dd($pricelist);
     }
 }
 

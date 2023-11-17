@@ -38,14 +38,13 @@ class PricelistController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $validatorData = Validator::make( $request->all(), [
             'stock_master_id' => [
                 'required',
                 Rule::unique('pricelists', 'stock_master_id')->where(fn ($query) => $query->where( [ 'city_id' => $request->city_i] ))],
             'vendor_id' => ['required'],
             'type_expedition' => ['required'],
-            'purchase_price' => ['required'],
-            'tax_price' => ['required'],
             'pay_a' => ['required'],
             'pay_b' => ['required'],
             'pay_c' => ['required'],

@@ -27,38 +27,6 @@
         @if ($quotation->status_quo == 'draf')
             <div class="card mb-4">
                 <div class="card-body">
-                    {{-- <form class="row g-3 needs-validation form-create" novalidate
-                        action="" method="POST">
-                        @csrf
-                        @method('POST')
-                        <input type="hidden" value="{{ $quotation->id }}" name="quotation_id">
-                        <div class="col-md-4">
-                            <label for="stock_id" class="form-label">Product</label>
-                            <select class="form-select select-box" id="stock_master" name="stock_master_id">
-                                <option value="" selected>Pilih Produk...</option>
-                                @foreach ($products as $product)
-                                    <option value="{{ $product->id }}" {{ old("stock_master_id") == $product->id ? "selected" : "" }}>{{ $product->code_stock }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="col-md">
-                            <label for="packaging" class="form-label">Packaging</label>
-                            <input type="text" class="form-control" id="packaging" readonly value="" required>
-                        </div>
-
-                        <div class="col-md">
-                            <label for="unit" class="form-label">Unit</label>
-                            <input type="text" class="form-control" id="unit" readonly value="" required>
-                        </div>
-                        <div class="col-md">
-                            <label for="unit_price" class="form-label">Unit/Price</label>
-                            <input type="text" class="form-control" id="unit" readonly value="" required>
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary" id="submit-input">Tambah Produk</button>
-                        </div>
-                    </form> --}}
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productPricelist">
                         Cari Produk
@@ -75,16 +43,17 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <table class="table table-bordered" style="width: 100%">
+                                    <table class="table table-bordered text-nowrap" style="width: 100%">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
                                                 <th>Nama Produk</th>
                                                 <th>Wilayah</th>
-                                                <th>Harga</th>
-                                                <th>Diskon</th>
-                                                <th>Tanggal Berlaku</th>
-                                                <th>Tanggal Berakhir</th>
+                                                <th>Cash</th>
+                                                <th>15H</th>
+                                                <th>30H</th>
+                                                <th>Berlaku</th>
+                                                <th>Exp.</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -94,12 +63,17 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $pricelist->stock_master->code_stock }}</td>
                                                 <td>{{ $pricelist->city->name_city }}</td>
-                                                <td>{{ $pricelist->price }}</td>
-                                                <td>{{ $pricelist->discount }}</td>
-                                                <td>{{ $pricelist->start_date }}</td>
-                                                <td>{{ $pricelist->end_date }}</td>
+                                                <td>{{ 'Rp ' . number_format($pricelist->pay_a, 0, ',', '.') }}</td>
+                                                <td>{{ 'Rp ' . number_format($pricelist->pay_b, 0, ',', '.') }}</td>
+                                                <td>{{ 'Rp ' . number_format($pricelist->pay_c, 0, ',', '.') }}</td>
+                                                <td><span class="badge bg-success">{{ $pricelist->start_date->format('d-m-Y') }}</span></td>
+                                                <td><span class="badge bg-danger">{{ $pricelist->end_date->format('d-m-Y') }}</span></td>
                                                 <td>
-                                                    <button class="btn btn-sm btn-primary">Pilih</button>
+                                                    <form action="{{ route('storeItemQuo', $pricelist->id) }}" method="POST" class="needs-validation form-create">
+                                                        @csrf
+                                                        @method('POST')
+                                                        <button type="submit" class="btn btn-sm btn-primary">Pilih</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                             @endforeach

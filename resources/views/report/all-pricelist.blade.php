@@ -19,8 +19,6 @@
                 <th>ORIGIN</th>
                 <th>VENDOR</th>
                 <th>EKSPEDISI</th>
-                <th>HARGA BELI</th>
-                <th>PPN 11%</th>
                 <th>CASH</th>
                 <th>TOP 15H</th>
                 <th>TOP 30H</th>
@@ -34,8 +32,6 @@
                 <td>{{ $item->city->name_city }}</td>
                 <td>{{ $item->vendor_id }}</td>
                 <td>{{ $item->type_expedition }}</td>
-                <td>{{ 'Rp ' . number_format($item->purchase_price, 0, ',', '.') }}</td>
-                <td>{{ 'Rp ' . number_format($item->tax_price, 0, ',', '.') }}</td>
                 <td>{{ 'Rp ' . number_format($item->pay_a, 0, ',', '.') }}</td>
                 <td>{{ 'Rp ' . number_format($item->pay_b, 0, ',', '.') }}</td>
                 <td>{{ 'Rp ' . number_format($item->pay_c, 0, ',', '.') }}</td>

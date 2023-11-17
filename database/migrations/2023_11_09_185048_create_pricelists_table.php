@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('stock_master_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('city_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('vendor_id');
+            $table->string('type_expedition');
             $table->decimal('pay_a', 10,2);
             $table->decimal('pay_b', 10,2);
             $table->decimal('pay_c', 10,2);
