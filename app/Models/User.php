@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Models\TaskManagement\Activity;
+use App\Models\TaskManagement\Progress;
 use App\Models\Transaction\Quotation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -63,5 +64,10 @@ class User extends Authenticatable
     public function quotation(): HasMany
     {
         return $this->hasMany(Quotation::class, 'id', 'user_id');
+    }
+
+    public function progress(): hasOne
+    {
+        return $this->hasOne(Progress::class);
     }
 }

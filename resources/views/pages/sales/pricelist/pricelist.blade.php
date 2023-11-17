@@ -69,7 +69,7 @@
                     @csrf
                     @method('POST')
                     <div class="row mb-3 g-2">
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-4 mb-2">
                             <label class="form-label">Nama Produk</label>
                             <select class="form-select select-box @error('stock_master_id') is-invalid @enderror"
                                 name="stock_master_id" required>
@@ -81,7 +81,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-4 mb-2">
                             <label class="form-label">Wilayah</label>
                             <select class="form-select select-box @error('city_id') is-invalid @enderror" name="city_id"
                                 required>
@@ -92,11 +92,11 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-4 mb-2">
                             <label class="form-label">Vendor</label>
                             <input type="text" class="form-control" placeholder="Nama vendor" name="vendor_id" required>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-3 mb-2">
                             <label class="form-label">Ekspedisi</label>
                             <select class="form-select select-box @error('type_expedition') is-invalid @enderror"
                                 name="type_expedition" required>
@@ -105,36 +105,36 @@
                                 <option value="Loco" {{ old('type_expedition') == 'Loco' }}>Loco</option>
                             </select>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-3 mb-2">
                             <label class="form-label">Harga (Cash)</label>
-                            <div class="input-group col-md-3 mb-3">
+                            <div class="input-group col-md-3 mb-2">
                                 <span class="input-group-text">Rp</span>
                                 <input type="text" class="form-control number-input" placeholder="Rp 24.038"
                                     name="pay_a" value="{{ old('pay_a') }}" required>
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-3 mb-2">
                             <label class="form-label">Harga (15H)</label>
-                            <div class="input-group col-md-3 mb-3">
+                            <div class="input-group col-md-3 mb-2">
                                 <span class="input-group-text">Rp</span>
                                 <input type="text" class="form-control number-input" placeholder="Rp 23.000"
                                     name="pay_b" value="{{ old('pay_b') }}" required>
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-3 mb-2">
                             <label class="form-label">Harga (30H)</label>
-                            <div class="input-group col-md-3 mb-3">
+                            <div class="input-group col-md-3 mb-2">
                                 <span class="input-group-text">Rp</span>
                                 <input type="text" class="form-control number-input" placeholder="Rp 36.408"
                                     name="pay_c" value="{{ old('pay_c') }}" required>
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-3 mb-2">
                             <label class="form-label">Tanggal Berlaku</label>
                             <input type="date" class="form-control" name="start_date"
                                 value="{{ old('start_date') }}" required>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-3 mb-2">
                             <label class="form-label">Exp. Date</label>
                             <input type="date" class="form-control" name="end_date" value="{{ old('end_date') }}"
                                 required>

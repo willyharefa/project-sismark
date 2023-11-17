@@ -84,12 +84,13 @@
                                 <th>#</th>
                                 <th>Code</th>
                                 <th>Tanggal Input</th>
-                                <th>Nama Customer</th>
+                                <th data-priority='1'>Nama Customer</th>
                                 <th>Nama CP</th>
                                 <th>Tipe Customer</th>
                                 <th>Jabatan</th>
                                 <th>Bin</th>
-                                <th class="text-center">Log</th>
+                                <th data-priority='3' class="text-center">Log</th>
+                                <th data-priority='2'>Progress</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -106,6 +107,14 @@
                                 <td>{{ $activity->location }}</td>
                                 <td>
                                     <a class="fw-bold" href="{{ route('createProgress', $activity->id) }}" class="nav-link">{{ $activity->progress->count() }}</a>
+                                </td>
+                                <td><span class="badge bg-info">
+                                    @if ($activity->type_action == null)
+                                        progress
+                                    @else
+                                        {{ $activity->type_action }}
+                                    @endif
+                                    </span>
                                 </td>
                                 <td>
                                     <a class="btn btn-sm btn-warning" href="{{ route('activities.edit', $activity->id) }}">Edit</a>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('date_activity');
             $table->string('type_progress');
             $table->text('detail');
-            $table->enum('status', ['Progress', 'Done']);
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

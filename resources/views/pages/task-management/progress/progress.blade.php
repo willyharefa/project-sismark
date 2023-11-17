@@ -51,13 +51,13 @@
                                 <div class="col-md-6">
                                     <select class="form-select" name="type_activity" required>
                                         <option value="" selected>Pilih aktivitas...</option>
-                                        <option value="Mapping">Mapping</option>
-                                        <option value="Introduction">Introduction</option>
-                                        <option value="Penetration">Penetration</option>
-                                        <option value="Plantest">Plantest</option>
-                                        <option value="Quotation">Quotation</option>
-                                        <option value="Deals PO">Deals PO</option>
-                                        <option value="Supply & Maintenance">Supply & Maintenance</option>
+                                        <option value="mapping">Mapping</option>
+                                        <option value="introduction">Introduction</option>
+                                        <option value="penetration">Penetration</option>
+                                        <option value="jartest">Jartest</option>
+                                        <option value="quotation">Quotation</option>
+                                        <option value="deals">Deals PO</option>
+                                        <option value="supply & maintenance">Supply & Maintenance</option>
                                     </select>
                                 </div>
                             </div>
@@ -72,25 +72,6 @@
                             </div>
                         </div>
                     </div>
-                    <fieldset class="row mb-3">
-                        <legend class="col-form-label col-sm-2 pt-0">Status Kegiatan</legend>
-                        <div class="col-sm-10">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status_activity" id="progress"
-                                    value="Progress" checked>
-                                <label class="form-check-label" for="progress">
-                                    Tandai sebagai Progress
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status_activity" id="done"
-                                    value="Done">
-                                <label class="form-check-label" for="done">
-                                    Tandai telah selesai
-                                </label>
-                            </div>
-                        </div>
-                    </fieldset>
                     <button type="submit" class="btn btn-primary">Buat Progress</button>
                 </form>
             </div>
@@ -103,14 +84,13 @@
             <h5 class="card-header">Riwayat Aktivitas Saya</h5>
             <div class="card-body">
                 <div class="table-responsive text-nowrap">
-                    <table class="table table-bordered" id="table" style="width:100%">
+                    <table class="table table-bordered table-sm" id="table" style="width:100%">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Tanggal Input</th>
                                 <th>Jenis Aktivitas</th>
                                 <th>Keterangan</th>
-                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -119,18 +99,13 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $data->created_at->format('d/m/Y') }}</td>
-                                    <td>{{ $data->type_progress }}</td>
+                                    <td><span class="badge bg-info">{{ $data->type_progress }}</span></td>
                                     <td>{{ $data->detail }}</td>
-                                    <td>
-                                        <span class="badge bg-warning">{{ $data->status }}</span>
-                                    </td>
                                     <td>
                                         <form action="#" class="d-inline-block form-destroy" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-icon btn-outline-danger">
-                                                <span class="tf-icons bx bx-trash-alt"></span>
-                                            </button>
+                                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                                         </form>
                                     </td>
                                 </tr>

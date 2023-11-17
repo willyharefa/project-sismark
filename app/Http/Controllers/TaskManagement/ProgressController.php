@@ -5,6 +5,7 @@ namespace App\Http\Controllers\TaskManagement;
 use App\Http\Controllers\Controller;
 use App\Models\TaskManagement\Progress;
 use App\Models\TaskManagement\Activity;
+use Exception;
 use Illuminate\Http\Request;
 
 class ProgressController extends Controller
@@ -29,15 +30,23 @@ class ProgressController extends Controller
      */
     public function store(Request $request)
     {
-        Progress::create([
-            'activity_id' => $request->activity_id,
-            'date_activity' => $request->date_activity,
-            'type_progress' => $request->type_activity,
-            'detail' => $request->detail,
-            'status' => $request->status_activity
-        ]);
-
-        return redirect()->back()->with('success','Yeey, Progress baru anda telah berhasil di input ✅');
+        try {
+            Progress::create([
+                'activity_id'   => $request->activity_id,
+                'date_activity' => $request->date_activity,
+                'type_progress' => $request->type_activity,
+                'detail' => $request->detail,
+                'user_id' => 8,
+            ]);
+    
+            Activity::find($request->activity_id)->update([
+                'type_action'=> $request->type_activity,
+            ]);
+    
+            return redirect()->back()->with('success','Yeey, Progress baru anda telah berhasil di input ✅');
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
         
     }
 

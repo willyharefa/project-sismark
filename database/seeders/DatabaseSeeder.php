@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             TitleSeeder::class,
             BranchSeeder::class,
-            StockMasterSeeder::class,
+            // StockMasterSeeder::class,
             CitySeeder::class,
             UserSeeder::class,
         ]);

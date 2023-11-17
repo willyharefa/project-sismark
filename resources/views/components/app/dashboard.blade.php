@@ -39,7 +39,7 @@
                                                 <i class="bx bx-dots-vertical-rounded"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="{{ route('stocks.index') }}">View More</a>
+                                                <a class="dropdown-item" href="{{ route('stock-master.index') }}">View More</a>
                                             </div>
                                         </div>
                                     </div>
@@ -61,7 +61,7 @@
                                                 <i class="bx bx-dots-vertical-rounded"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="{{ route('stocks.index') }}">View More</a>
+                                                <a class="dropdown-item" href="{{ route('stock-master.index') }}">View More</a>
                                             </div>
                                         </div>
                                     </div>

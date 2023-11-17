@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [Controller::class, 'index'])->name('index');
 
-Route::resource("stocks", StockMasterController::class);
+Route::resource("stock-master", StockMasterController::class);
+Route::post('/stock-import', [Controller::class, 'importStock'])->name('importStock');
+Route::get('/all-product', [ReportController::class, 'allProducts'])->name('allProducts');
+
+
 Route::resource('activities', ActivityController::class);
 Route::get('/work-progress/{activity}', [ProgressController::class, 'createProgress'])->name('createProgress');
 Route::resource('progress', ProgressController::class);

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name_stock');
             $table->string('unit');
             $table->string('packaging');
+            $table->string('stock_category');
             $table->foreignId('branch_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->unique(['code_stock', 'branch_id']);
             $table->timestamps();

@@ -36,4 +36,6 @@ class Activity extends Model
     {
         return $this->belongsTo(Quotation::class);
     }
+
+    
 }

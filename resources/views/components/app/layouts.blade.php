@@ -103,7 +103,7 @@
 
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="{{ route('stocks.index') }}" class="menu-link">
+                                <a href="{{ route('stock-master.index') }}" class="menu-link">
                                     <div data-i18n="Without menu">Product Master</div>
                                 </a>
                             </li>

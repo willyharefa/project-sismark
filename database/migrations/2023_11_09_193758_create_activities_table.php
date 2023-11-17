@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('position_pic');
             $table->string('location');
             $table->string('type_customer');
-            $table->enum('status_work', ['on-going', 'done']);
+            $table->enum('type_action', ['mapping', 'introduction', 'penetration', 'jartest', 'quotation', 'deals', 'supply & maintenance'])->nullable();
+            $table->enum('status_work', ['on-going', 'done'])->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('branch_id')->constrained()->cascadeOnUpdate();
             $table->timestamps();
