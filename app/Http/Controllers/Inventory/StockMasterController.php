@@ -112,6 +112,7 @@ class StockMasterController extends Controller
      */
     public function destroy(StockMaster $stockMaster)
     {
-        //
+        $stockMaster->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }

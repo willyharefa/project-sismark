@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Transaction;
 
 use App\Http\Controllers\Controller;
-use App\Models\Inventory\StockMaster;
 use App\Models\Sales\Pricelist;
 use App\Models\TaskManagement\Activity;
 use App\Models\Transaction\Quotation;
+use App\Models\Transaction\QuotationItem;
 use Illuminate\Http\Request;
 
 class QuotationController extends Controller
@@ -64,10 +64,10 @@ class QuotationController extends Controller
      */
     public function show(Quotation $quotation)
     {
-        // dd($quotation);
-
         $pricelists = Pricelist::where('type_expedition', $quotation->type_expedition)->with('stock_master', 'city')->get();
-        return view('pages.transaction.quotation.item-quotation', compact('quotation', 'pricelists'));
+        $quotationItems = QuotationItem::with('quotation', 'pricelist')->where('quotation_id', $quotation->id)->get();
+        dd($quotationItems);
+        return view('pages.transaction.quotation.item-quotation', compact('quotation', 'pricelists', 'quotationItems'));
     }
 
     /**
@@ -105,9 +105,18 @@ class QuotationController extends Controller
         return response()->json($data);
     }
 
-    public function storeItemQuo(Request $request, Pricelist  $pricelist)
+    public function storeItemQuo(Request $request, Pricelist  $pricelist, Quotation $quotation)
     {
-        dd($pricelist);
+        QuotationItem::create([
+            'quotation_id' => $quotation->id,
+            'pricelist_id' => $pricelist->id,
+        ]);
+
+        return redirect()->back()->with('success', 'Produk berhasil ditambahkan');
+    }
+    public function submitQuotation(Request $request, Quotation $quotation)
+    {
+        dd($quotation);
     }
 }
 

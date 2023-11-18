@@ -33,15 +33,15 @@
                             <div class="row g-2">
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" id="customer" name="name_customer"
-                                        placeholder="Nama Perusahaan" required>
+                                        placeholder="Nama Perusahaan" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" id="type_bussiness" name="type_bussiness"
-                                        placeholder="Bidang Usaha" required>
+                                        placeholder="Bidang Usaha" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" id="type_customer" name="type_customer"
-                                        placeholder="Jenis Customer" required>
+                                        placeholder="Jenis Customer" autocomplete="off" required>
                                 </div>
                             </div>
                         </div>
@@ -51,10 +51,10 @@
                         <div class="col-sm-10">
                                 <div class="row g-2">
                                     <div class="col-md-7">
-                                        <input type="text" class="form-control" id="name_pic_customer" name="name_pic_customer" placeholder="Nama Contact Person" required/>
+                                        <input type="text" class="form-control" id="name_pic_customer" name="name_pic_customer" placeholder="Nama Contact Person" autocomplete="off" required/>
                                     </div>
                                     <div class="col-md-5">
-                                        <input type="text" class="form-control" id="position_pic" name="position_pic" placeholder="Position PIC" required>
+                                        <input type="text" class="form-control" id="position_pic" name="position_pic" placeholder="Position PIC" autocomplete="off" required>
                                     </div>
                                 </div>
                         </div>

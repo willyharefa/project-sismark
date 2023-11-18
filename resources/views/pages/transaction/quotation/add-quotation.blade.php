@@ -8,6 +8,15 @@
             </ol>
         </nav>
 
+        {{-- Alert Success --}}
+        @if ($message = Session::get('success'))
+            <div class="alert alert-info alert-dismissible text-black" role="alert">
+                {{ $message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        {{-- End Alert Success --}}
+
         {{-- card quotation --}}
         <div class="card mb-4">
             <div class="card-body">

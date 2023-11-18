@@ -22,7 +22,8 @@ Route::resource('activities', ActivityController::class);
 Route::get('/work-progress/{activity}', [ProgressController::class, 'createProgress'])->name('createProgress');
 Route::resource('progress', ProgressController::class);
 Route::resource('quotation', QuotationController::class);
-Route::post('/quotation/item/{pricelist}', [QuotationController::class, 'storeItemQuo'])->name('storeItemQuo');
+Route::post('/quotation/item/{pricelist}/quotation/{quotation}', [QuotationController::class, 'storeItemQuo'])->name('storeItemQuo');
+Route::post('quotation/{quotation}/product', [QuotationController::class, 'submitQuotation'])->name('submitQuotation');
 Route::get('/product-pricelist/{id}', [QuotationController::class, 'getProduct'])->name('getProduct');
 Route::get('/quotation-form/{activity}', [QuotationController::class, 'quotationForm'])->name('quotationForm');
 

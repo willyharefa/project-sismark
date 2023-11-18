@@ -53,7 +53,7 @@
                                                 <th>15H</th>
                                                 <th>30H</th>
                                                 <th>Berlaku</th>
-                                                <th>Exp.</th>
+                                                <th>Exp. Harga</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -69,7 +69,7 @@
                                                 <td><span class="badge bg-success">{{ $pricelist->start_date->format('d-m-Y') }}</span></td>
                                                 <td><span class="badge bg-danger">{{ $pricelist->end_date->format('d-m-Y') }}</span></td>
                                                 <td>
-                                                    <form action="{{ route('storeItemQuo', $pricelist->id) }}" method="POST" class="needs-validation form-create">
+                                                    <form action="{{ route('storeItemQuo', [$pricelist->id, $quotation->id]) }}" method="POST" class="needs-validation form-create">
                                                         @csrf
                                                         @method('POST')
                                                         <button type="submit" class="btn btn-sm btn-primary">Pilih</button>
