@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('quotation_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('pricelist_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            // $table->string('type_expedition');
+            $table->decimal('price', 10,2);
             $table->timestamps();
         });
     }

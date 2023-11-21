@@ -65,8 +65,7 @@ class QuotationController extends Controller
     public function show(Quotation $quotation)
     {
         $pricelists = Pricelist::where('type_expedition', $quotation->type_expedition)->with('stock_master', 'city')->get();
-        $quotationItems = QuotationItem::with('quotation', 'pricelist')->where('quotation_id', $quotation->id)->get();
-        dd($quotationItems);
+        $quotationItems = QuotationItem::where('quotation_id', $quotation->id)->with('quotation', 'pricelist')->get();
         return view('pages.transaction.quotation.item-quotation', compact('quotation', 'pricelists', 'quotationItems'));
     }
 
@@ -116,7 +115,7 @@ class QuotationController extends Controller
     }
     public function submitQuotation(Request $request, Quotation $quotation)
     {
-        dd($quotation);
+        // dd($quotation);
     }
 }
 
