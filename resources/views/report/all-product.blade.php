@@ -50,7 +50,7 @@
 
     <footer id="product-footer">
         <h5>&copy; <?php echo date("Y");?> PT Mito Energi Indonesia</h5> 
-        <div class="label-sm">Dibuat oleh Departement IT</div>
+        <div class="label-sm ">Dibuat oleh Departement IT</div>
     </footer>
 </body>
 </html>

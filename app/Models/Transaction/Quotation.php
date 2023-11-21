@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Quotation extends Model
@@ -29,8 +30,8 @@ class Quotation extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function quotation_items(): BelongsTo
+    public function quotation_items(): HasMany
     {
-        return $this->belongsTo(QuotationItem::class);
+        return $this->hasMany(QuotationItem::class, 'quotation_id');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Models\Transaction;
 use App\Models\Sales\Pricelist;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class QuotationItem extends Model
@@ -13,9 +14,9 @@ class QuotationItem extends Model
     protected $guarded = ['id'];
     // protected $tables = 'quotation_items';
     
-    public function quotation(): HasOne
+    public function quotation(): BelongsTo
     {
-        return $this->hasOne(Quotation::class, 'id', 'quotation_id');
+        return $this->belongsTo(Quotation::class);
         // duluan 'id' baru 'quotation_id' dikarenakan [CASE 1] dikarenakan set hasOne nya dimodel Utama,
     }
 

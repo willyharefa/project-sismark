@@ -183,4 +183,49 @@
             }, false
         );
     });
+
+    const submitItemQuotation = document.querySelectorAll('.form-submit-item-quo');
+    Array.from(submitItemQuotation).forEach((form) => {
+        form.addEventListener(
+            "submit",
+            (event) => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                form.classList.add("was-validated");
+
+                if (form.checkValidity()) {
+                    event.preventDefault();
+                    Swal.fire({
+                        title: "Anda Yakin 🤔?",
+                        text: "Data tidak dapat diedit kembali",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#696cff",
+                        cancelButtonColor: "#8592a3",
+                        confirmButtonText: "Ya!",
+                        focusCancel: true,
+                        reverseButtons: true,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                title: "Berhasil",
+                                text: "Penawaran berhasil di submit 🚀",
+                                icon: "success",
+                                timer: 800,
+                                didOpen: () => {
+                                    Swal.showLoading()
+                                  },
+                                  willClose: () => {
+                                    form.submit();
+                                  }
+                            });
+                        }
+                    });
+                }
+            }, false
+        );
+    });
 })();

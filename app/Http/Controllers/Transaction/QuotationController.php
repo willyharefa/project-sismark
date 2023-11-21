@@ -104,18 +104,24 @@ class QuotationController extends Controller
         return response()->json($data);
     }
 
-    public function storeItemQuo(Request $request, Pricelist  $pricelist, Quotation $quotation)
+    public function storeItemQuo(Request $request)
     {
+        // dd($request->all());
         QuotationItem::create([
-            'quotation_id' => $quotation->id,
-            'pricelist_id' => $pricelist->id,
+            'quotation_id' => $request->quotation_id,
+            'pricelist_id' => $request->pricelist_id,
+            'price' => $request->price
         ]);
 
         return redirect()->back()->with('success', 'Produk berhasil ditambahkan');
     }
     public function submitQuotation(Request $request, Quotation $quotation)
     {
-        // dd($quotation);
+        $quotation->update([
+            'status_quo' => 'request'
+        ]);
+        return redirect()->route('quotation.index')->with('success', 'Penawaran berhasil dibuat, klik cetak untuk aksi selanjutnya 🚀');
+
     }
 }
 
