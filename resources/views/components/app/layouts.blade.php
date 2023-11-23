@@ -186,7 +186,7 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="" class="menu-link">
+                                <a href="{{ route('po-internal.index') }}" class="menu-link">
                                     <div>PO Internal</div>
                                 </a>
                             </li>

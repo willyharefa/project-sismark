@@ -9,15 +9,15 @@
 
 </head>
 <body>
-    <header id="product-header">
+    <header id="report-header">
         <h4>PT Mito Energi Indonesia</h4>
         <div class="label-xs address">Komp. Taman Harapan Indah Blk. C No.16, <br> Jl. Riau Gg. Harapan 2, <br> Air Hitam, Kec. Payung Sekaki, <br> Kota Pekanbaru, <br> Riau 28292</div>
     </header>
 
     
-    <main id="product-content">
+    <main id="report-content">
         <h2 class="title-content">Daftar Produk</h2>
-        <table class="table" id="product-table">
+        <table class="table" id="report-table">
             <thead>
                 <tr>
                     <th>#</th>
@@ -48,7 +48,7 @@
         </table>
     </main>
 
-    <footer id="product-footer">
+    <footer id="report-footer">
         <h5>&copy; <?php echo date("Y");?> PT Mito Energi Indonesia</h5> 
         <div class="label-sm ">Dibuat oleh Departement IT</div>
     </footer>

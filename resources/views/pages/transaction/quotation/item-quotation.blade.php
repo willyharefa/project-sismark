@@ -139,7 +139,7 @@
                 <h5>List Produk Penawaran</h5>
                 @if ($quotation->status_quo == 'draf')
                     <div>
-                        @if ($quotationItems !== null)
+                        @if ($quotationItems->isNotEmpty())
                             <form action="{{ route('submitQuotation', $quotation->id) }}" method="POST"
                                 class="form-submit-item-quo">
                                 @csrf

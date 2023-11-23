@@ -16,7 +16,7 @@ class QuotationController extends Controller
      */
     public function index()
     {
-        $quotations = Quotation::with('user', 'branch', 'activities')->get();
+        $quotations = Quotation::with('user', 'branch', 'activities')->latest()->get();
         $activities = Activity::with('progress')->where('status_work', 'on-going')->get();
         return view('pages.transaction.quotation.quotation', compact('activities', 'quotations'));
     }
@@ -74,7 +74,7 @@ class QuotationController extends Controller
      */
     public function edit(Quotation $quotation)
     {
-        //
+        return view('pages.transaction.quotation.edit-quotation', compact('quotation'));
     }
 
     /**
@@ -82,7 +82,14 @@ class QuotationController extends Controller
      */
     public function update(Request $request, Quotation $quotation)
     {
-        //
+        $quotation->update([
+            'no_sp' => $request->no_sp,
+            'type_expedition' => $request->type_expedition,
+            'type_payment' => $request->type_payment,
+            'remark' => $request->remark
+        ]);
+
+        return redirect()->route('quotation.index')->with('success', 'Data berhasil diperbaharui 🚀');
     }
 
     /**

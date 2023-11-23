@@ -38,6 +38,25 @@ footer {
 
 }
 
+#report-header .wrapper-header .col-sec-1, #report-header .wrapper-header .col-sec-2 {
+    float: left;
+}
+
+#report-header .wrapper-header .col-sec-1 {
+    width: 10%;
+}
+#report-header .wrapper-header .col-sec-2 {
+    width: 72%;
+}
+
+#report-header .wrapper-header .col-sec-3 {
+    width: 18%;
+    float: right;
+}
+
+#report-content {
+    margin-top: 30px;
+}
 
 table {
     width: 100%;
@@ -90,8 +109,7 @@ table tbody tr td {
     text-align: left;
 }
 
-#product-header .address {
-    /* width: 450px; */
+#report-header .address {
     text-wrap: wrap;
     margin-left: auto;
     opacity: .50;
@@ -99,16 +117,82 @@ table tbody tr td {
     margin-bottom: 50px;
 }
 
-#product-content .title-content {
+#report-content .title-content {
     margin-bottom: 20px;
 }
 
-#product-table thead {
+#report-table thead {
     background-color: rgb(191, 197, 203);
 }
-#product-table tbody tr td:nth-child(1) {
+#report-table tbody tr td:nth-child(1) {
     text-align: center;
 }
-#product-table tbody tr td:nth-child(4), #product-table tbody tr td:nth-child(5) {
+#report-table tbody tr td:nth-child(4), #report-table tbody tr td:nth-child(5) {
     text-align: center;
 }
+
+#header-cust-quo {
+    width: 500px;
+    margin-bottom: 50px;
+}
+
+
+/* Page Quotation */
+#report-content .current-date {
+    float: right;
+    text-align: right;
+    overflow: auto;
+}
+#header-cust-quo, #header-cust-quo tbody, #header-cust-quo tr, #header-cust-quo th, #header-cust-quo td {
+    border: none !important;
+    text-align: left;
+}
+
+#header-cust-quo {
+    font-size: 22px;
+    line-height: 90%;
+}
+.wrapper-detail-cust {
+    font-size: 22px;
+}
+
+.wrapper-detail-cust .wrapper-info {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    line-height: 120%;
+}
+
+.wrapper-detail-cust .table-info-no-sp {
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 80px;
+    width: auto;
+}
+
+.wrapper-detail-cust .table-info-no-sp, .wrapper-detail-cust .table-info-no-sp td, .wrapper-detail-cust tr, .wrapper-detail-cust .table-info-no-sp tbody {
+    border: none !important;
+    line-height: 90%;
+}
+
+.wrapper-detail-cust .table-info-no-sp tr td:nth-child(1) {
+    width: 140px;
+}
+
+.quo-item {
+    clear: both;
+}
+
+.quo-item .quo-item-table thead tr th {
+    text-align: left !important;
+}
+
+.quo-item .quo-item-table {
+    font-size: 22px;
+}
+
+.quo-item .quo-item-table tbody tr td:nth-child(4), .quo-item .quo-item-table tbody tr td:nth-child(5) {
+    text-align: left !important;
+}
+/* Page Quotation */

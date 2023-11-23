@@ -6,6 +6,8 @@ use App\Http\Controllers\Report\ReportController;
 use App\Http\Controllers\Sales\PricelistController;
 use App\Http\Controllers\TaskManagement\ProgressController;
 use App\Http\Controllers\TaskManagement\ActivityController;
+use App\Http\Controllers\Transaction\PoInternalController;
+use App\Http\Controllers\Transaction\PoInternalItemController;
 use App\Http\Controllers\Transaction\QuotationController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +27,7 @@ Route::resource('progress', ProgressController::class);
 Route::resource('quotation', QuotationController::class);
 Route::post('/quotation/item', [QuotationController::class, 'storeItemQuo'])->name('storeItemQuo');
 Route::post('quotation/{quotation}/product', [QuotationController::class, 'submitQuotation'])->name('submitQuotation');
+Route::get('/quotation-print/{quotation}', [ReportController::class, 'quotationPrint'])->name('quotationPrint');
 
 Route::get('/product-pricelist/{id}', [QuotationController::class, 'getProduct'])->name('getProduct');
 Route::get('/quotation-form/{activity}', [QuotationController::class, 'quotationForm'])->name('quotationForm');
@@ -33,3 +36,9 @@ Route::resource('pricelist', PricelistController::class);
 Route::post('/pricelist-excel', [Controller::class, 'importFileExcel'])->name('importFileExcel');
 
 Route::get('/all-pricelist', [ReportController::class, 'allPricelist'])->name('allPricelist');
+
+Route::resource('po-internal', PoInternalController::class);
+Route::put('po-internal-item/{id}/submit', [PoInternalController::class, 'poInternalSubmit'])->name('poInternalSubmit');
+Route::get('po-internal-print/{id}', [ReportController::class, 'printPoInternal'])->name('printPoInternal');
+
+Route::resource('po-internal-item', PoInternalItemController::class);

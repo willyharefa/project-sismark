@@ -4,6 +4,7 @@ namespace App\Models\Inventory;
 
 use App\Models\Backend\Branch;
 use App\Models\Sales\Pricelist;
+use App\Models\Transaction\PoInternalItem;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -23,5 +24,10 @@ class StockMaster extends Model
     public function pricelist(): BelongsTo
     {
         return $this->belongsTo(Pricelist::class);
+    }
+
+    public function po_internal_item(): BelongsTo
+    {
+        return $this->belongsTo(PoInternalItem::class);
     }
 }

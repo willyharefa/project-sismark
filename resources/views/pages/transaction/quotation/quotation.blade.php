@@ -96,19 +96,9 @@
                                 <td><span class="badge rounded-pill bg-warning">{{ $quo->status_quo }}</span></td>
                                 <td>{{ $quo->user->nickname }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-info" title="Cetak Penawaran"><i class='bx bxs-printer bx-xs'></i></button>
+                                    <a class="btn btn-sm btn-info" title="Cetak Penawaran" href="{{ route('quotationPrint', $quo->id) }}"><i class='bx bxs-printer bx-xs'></i></a>
                                 </td>
                                 <td>
-                                    {{-- <button class="btn btn-sm btn-info" title="Cetak Penawaran">
-                                        <i class='bx bxs-printer bx-xs'></i></button>
-
-                                    <a href="{{ route('quotation.show', $quo->id) }}" class="btn btn-sm btn-secondary"
-                                        style="background-color: #198754; border-color: #198754" title="Tambahkan Produk">
-                                        <i class='bx bxs-data bx-xs'></i></a>
-
-                                    <button class="btn btn-sm btn-warning">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Hapus</button> --}}
-
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="bx bx-dots-vertical-rounded"></i>
@@ -117,7 +107,7 @@
                                         <div class="dropdown-menu" style="">
                                             <a href="{{ route('quotation.show', $quo->id) }}" class="dropdown-item" title="Tambahkan Produk"><i class='bx bx-data'></i> Tambah Produk</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                            <a class="dropdown-item" href="{{ route('quotation.edit', $quo->id) }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
                                             <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Hapus</a>
                                             
                                         </div>
