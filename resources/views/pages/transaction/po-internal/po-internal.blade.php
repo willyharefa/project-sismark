@@ -67,13 +67,12 @@
                                     </td>
                                     <td>{{ $data->created_at->format('d F Y') }}</td>
                                     <td>
-                                        @if ($data->status_po_in == 'draf')
-                                            <div
-                                            div class="dropdown">
+                                        <div class="d-inline-block">
+                                            <div class="dropdown">
                                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <i class="bx bx-dots-vertical-rounded"></i>
                                                 </button>
-        
+    
                                                 <div class="dropdown-menu" style="">
                                                     <a href="{{ route('po-internal.show', $data->id) }}" class="dropdown-item" title="Tambahkan Produk"><i class='bx bx-data'></i> Tambah Item</a>
                                                     <div class="dropdown-divider"></div>
@@ -82,14 +81,15 @@
                                                     
                                                 </div>
                                             </div>
-                                        @else
-                                        <a class="btn btn-sm btn-info" href="{{ route('printPoInternal', $data->id) }}" title="Cetak Informasi">
-                                            <i class='bx bxs-printer bx-xs'></i>
-                                        </a>
-                                        <button class="btn btn-sm btn-info" title="Lihat Selengkapnya">
-                                            <i class='bx bxs-file-doc bx-xs'></i>
-                                        </button>
-                                        @endif
+                                        </div>
+                                        <div class="d-inline-block">
+                                            <a class="btn btn-sm btn-info" target="_blank" href="{{ route('printPoInternal', $data->id) }}" title="Cetak Informasi">
+                                                <i class='bx bxs-printer bx-xs'></i>
+                                            </a>
+                                            <button class="btn btn-sm btn-info" title="Lihat Selengkapnya">
+                                                <i class='bx bxs-file-doc bx-xs'></i>
+                                            </button>
+                                        </div>
 
 
                                     </td>

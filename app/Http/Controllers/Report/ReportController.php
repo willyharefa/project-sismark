@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Inventory\StockMaster;
 use App\Models\Sales\Pricelist;
 use App\Models\Transaction\PoInternal;
+use App\Models\Transaction\PoInternalItem;
 use App\Models\Transaction\Quotation;
 use App\Models\Transaction\QuotationItem;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -46,7 +47,19 @@ class ReportController extends Controller
     public function printPoInternal($id)
     {
         $poInternal = PoInternal::find($id)->with('po_internal_item')->latest()->first();
-        $pdf = Pdf::loadView('report.print-po-internal', ['pointernal' => $poInternal])->setOption(['dpi' => 150, 'defaultFont' => 'arial, sans-serif'])->setPaper('a4', 'portrait');
+        $poInternalItem = PoInternalItem::where('po_internal_id', $id)->with('po_internal', 'stock_master')->latest()->get();
+        $sumSubTotal = $poInternalItem->sum('total_price');
+        $ppn = $sumSubTotal * 0.11;
+        $grandTotal = $ppn + $sumSubTotal;
+        $pdf = Pdf::loadView('report.print-po-internal', [
+            'pointernal' => $poInternal,
+            'poInternalItem' => $poInternalItem,
+            'sumSubTotal' => $sumSubTotal,
+            'ppn' => $ppn,
+            'grandTotal' => $grandTotal,
+            ]
+        
+            )->setOption(['dpi' => 150, 'defaultFont' => 'arial, sans-serif'])->setPaper('a4', 'portrait');
     
         return $pdf->stream('document.pdf');
         

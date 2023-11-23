@@ -196,3 +196,41 @@ table tbody tr td {
     text-align: left !important;
 }
 /* Page Quotation */
+
+
+/* Page Print PO Internal Item */
+.po-in-item {
+    font-size: 23px !important;
+}
+
+.po-in-item thead tr th {
+    text-align: left;
+}
+
+.po-in-item thead tr th:nth-child(2) {
+    width: 170px
+}
+
+.po-in-item thead tr th:nth-child(1), .po-in-item thead tr th:nth-child(4), .po-in-item thead tr th:nth-child(5) {
+    text-align: center !important;
+}
+
+.sum-po-in {
+    margin-top: 30px;
+    font-size: 23px !important;
+    width: 40%;
+    margin-left: auto;
+}
+
+.sum-po-in, .sum-po-in tbody, .sum-po-in tbody tr td, .sum-po-in tbody tr th {
+    border: none !important;
+}
+
+.sum-po-in tbody tr th:nth-child(1) {
+    text-align: left;
+    width: 47%;
+}
+
+
+
+/* End Page */

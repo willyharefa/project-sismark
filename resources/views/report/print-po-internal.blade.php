@@ -56,37 +56,57 @@
 
         <div class="wrapper-detail-cust">
             <span>Kepada Yth,</span>
-            <h5>PT Mito Energi Indonesia</h5>
+            <div>PT Mito Energi Indonesia</div>
             <div class="wrapper-info">
                 <p>Dengan hormat, <br>
                     Kami dari {{ $pointernal->customer_id }} bermaksud membeli produk kimia anda, berikut ini terlampir daftar pembelian barang kimia :</p>
             </div>
         </div>
 
-        <table class="table quo-item-table" id="report-table">
+        <table class="table po-in-item" id="report-table">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Kode Produk</th>
-                    <th>Kategori Kimia</th>
                     <th>Nama Produk</th>
-                    <th>Harga Penawaran</th>
+                    <th>QTY</th>
+                    <th>Unit</th>
+                    <th>Harga</th>
+                    <th>Total Harga</th>
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($quotationItems as $key => $data)
+                @foreach ($poInternalItem as $key => $data)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $data->pricelist->stock_master->code_stock }}</td>
-                    <td>{{ $data->pricelist->stock_master->stock_category }}</td>
-                    <td>{{ $data->pricelist->stock_master->name_stock }}</td>
+                    <td>{{ $data->stock_master->code_stock }}</td>
+                    <td>{{ $data->stock_master->name_stock }}</td>
+                    <td>{{ $data->qty }}</td>
+                    <td>{{ $data->stock_master->unit }}</td>
                     <td>{{ 'Rp  '. number_format($data->price, 0, ',', '.') }}</td>
+                    <td>{{ 'Rp  '. number_format($data->total_price, 0, ',', '.') }}</td>
                 </tr>
-                @endforeach --}}
+                @endforeach
             </tbody>
         </table>
 
-        <p style="margin-top: 20px; line-height: 120%; font-size: 22px;">Demikian surat penawaran harga ini kami sampaikan, besar harapan kami bpk/ibu berminat dengan harga yang kami tawarkan. Atas perhatiannya, kami ucapkan terima kasih.</p>
+        <table class="sum-po-in">
+            <tbody>
+                <tr>
+                    <th>Sub Total</th>
+                    <td>: {{ 'Rp  '. number_format($sumSubTotal, 0, ',', '.') }}</td>
+                </tr>
+                <tr>
+                    <th>Ppn 11%</th>
+                    <td>: {{ 'Rp  '. number_format($ppn, 0, ',', '.') }}</td>
+                </tr>
+                <tr>
+                    <th>Grand Total</th>
+                    <td>: {{ 'Rp  '. number_format($grandTotal, 0, ',', '.') }}</td>
+                </tr>
+                
+            </tbody>
+        </table>
 
     </main>
 

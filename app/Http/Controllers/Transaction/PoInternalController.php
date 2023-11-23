@@ -92,7 +92,7 @@ class PoInternalController extends Controller
 
     public function poInternalSubmit($id)
     {
-        $poInternal = PoInternal::find($id)->first();   
+        $poInternal = PoInternal::where('id', $id)->first();   
         $poInternal->update([
             'status_po_in' => 'request'
         ]);
