@@ -2,6 +2,7 @@
 
 namespace App\Models\Backend;
 
+use App\Models\Partner\Customer;
 use App\Models\Transaction\Quotation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -31,5 +32,10 @@ class Branch extends Model
     public function quotation(): BelongsTo
     {
         return $this->belongsTo(Quotation::class);
+    }
+
+    public function customer(): BelongsTo
+    {
+        return $this->belongsTo(Customer::class);
     }
 }

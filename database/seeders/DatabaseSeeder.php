@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Inventory\StockMaster;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,6 +25,7 @@ class DatabaseSeeder extends Seeder
             // StockMasterSeeder::class,
             CitySeeder::class,
             UserSeeder::class,
+            SalesUserSeeder::class,
         ]);
     }
 }

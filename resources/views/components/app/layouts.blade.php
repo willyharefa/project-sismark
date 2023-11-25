@@ -161,7 +161,7 @@
 
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="" class="menu-link">
+                                <a href="{{ route('customer.index') }}" class="menu-link">
                                     <div>Customers</div>
                                 </a>
                             </li>
@@ -198,21 +198,6 @@
                             <li class="menu-item">
                                 <a href="javascript:void(0);" class="menu-link">
                                     <div data-i18n="Connections">Invoice</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    {{-- Projects --}}
-                    <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-folder"></i>
-                            <div>Projects</div>
-                        </a>
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="" class="menu-link">
-                                    <div>Prospect</div>
                                 </a>
                             </li>
                         </ul>
@@ -278,6 +263,28 @@
                         </ul>
                     </li> --}}
                     {{-- End Setting --}}
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">Administrator</span>
+                    </li>
+                    {{-- Sales --}}
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-folder"></i>
+                            <div>User Management</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="{{ route('user.index') }}" class="menu-link">
+                                    <div>Master User</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="" class="menu-link">
+                                    <div>Sales</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </aside>
             <!-- / Menu -->

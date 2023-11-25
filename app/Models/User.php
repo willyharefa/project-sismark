@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Account\SalesUser;
+use App\Models\Backend\Title;
 use App\Models\TaskManagement\Activity;
 use App\Models\TaskManagement\Progress;
 use App\Models\Transaction\Quotation;
@@ -69,5 +71,10 @@ class User extends Authenticatable
     public function progress(): hasOne
     {
         return $this->hasOne(Progress::class);
+    }
+
+    public function sales_user(): BelongsTo
+    {
+        return $this->belongsTo(SalesUser::class, 'user_id');
     }
 }
