@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('nickname');
-            $table->enum('gender', ['Male', 'Female']);
+            $table->enum('gender', ['Pria', 'Perempuan']);
             $table->string('employee_id');
             $table->foreignId('title_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('phone_number');

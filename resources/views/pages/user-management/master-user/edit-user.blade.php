@@ -20,9 +20,9 @@
         {{-- card User --}}
         <div class="card mb-4">
             <div class="card-body">
-                <form action="{{ route('user.store') }}" method="POST" class="needs-validation form-edit">
+                <form action="{{ route('user.update', $user->id) }}" method="POST" class="needs-validation form-edit">
                     @csrf
-                    @method('POST')
+                    @method('PUT')
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Nama Pengguna</label>
                         <div class="col-sm-10">
