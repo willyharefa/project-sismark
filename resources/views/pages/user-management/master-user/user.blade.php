@@ -108,10 +108,10 @@
                         <thead>
                             <tr>
                                 <th data-priority="0">#</th>
-                                <th data-priority="0">Karyawan ID</th>
+                                <th data-priority="2">Karyawan ID</th>
                                 <th data-priority="1">Nama Pengguna</th>
-                                <th data-priority="1">Posisi</th>
-                                <th data-priority="2">Username</th>
+                                <th data-priority="5">Posisi</th>
+                                <th data-priority="4">Username</th>
                                 <th data-priority="3">Aksi</th>
                             </tr>
                         </thead>
@@ -125,7 +125,11 @@
                                     <td>{{ $user->username }}</td>
                                     <td>
                                         <a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                        <button class="btn btn-sm btn-danger">Hapus</button>
+                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST" class="d-inline-block form-destroy">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
