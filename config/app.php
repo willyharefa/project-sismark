@@ -162,6 +162,11 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
+        * Custom Service / Helpers
+        */
+        App\Providers\AbbreviateNumberServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,

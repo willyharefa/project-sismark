@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Account;
+namespace App\Models\UserManagement;
 
 use App\Models\Partner\Customer;
 use App\Models\User;

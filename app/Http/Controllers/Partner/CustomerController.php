@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Partner;
 
 use App\Http\Controllers\Controller;
-use App\Models\Account\SalesUser;
+use App\Models\UserManagement\SalesUser;
 use App\Models\Partner\Customer;
 use Illuminate\Http\Request;
 

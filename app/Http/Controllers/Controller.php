@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\AbbreviateNumber;
 use App\Imports\PricelistImport;
 use App\Imports\StockImport;
 use App\Models\Inventory\StockMaster;
@@ -18,7 +19,7 @@ class Controller extends BaseController
     
     public function index()
     {
-        $sumProduct = StockMaster::count();
+        $sumProduct = AbbreviateNumber::abbreviate(StockMaster::count());
         return view("components.app.dashboard", compact("sumProduct"));
     }
 

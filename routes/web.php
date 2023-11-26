@@ -10,6 +10,7 @@ use App\Http\Controllers\TaskManagement\ActivityController;
 use App\Http\Controllers\Transaction\PoInternalController;
 use App\Http\Controllers\Transaction\PoInternalItemController;
 use App\Http\Controllers\Transaction\QuotationController;
+use App\Http\Controllers\UserManagement\SalesUserController;
 use App\Http\Controllers\UserManagement\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ Route::post('/stock-import', [Controller::class, 'importStock'])->name('importSt
 Route::get('/all-product', [ReportController::class, 'allProducts'])->name('allProducts');
 
 Route::resource('user', UserController::class);
+Route::resource('sales-user', SalesUserController::class);
 Route::resource('customer', CustomerController::class);
 
 

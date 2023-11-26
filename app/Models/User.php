@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Models\Account\SalesUser;
+use App\Models\UserManagement\SalesUser;
 use App\Models\Backend\Title;
 use App\Models\TaskManagement\Activity;
 use App\Models\TaskManagement\Progress;
