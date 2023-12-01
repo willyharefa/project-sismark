@@ -10,7 +10,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        {{-- End Alert Success --}}
+
+        {{-- If error --}}
+        @if ($message = Session::get('error'))
+            <div class="alert alert-info alert-dismissible text-black" role="alert">
+                {{ $message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        {{-- End Alert  --}}
 
         {{-- card User --}}
         <div class="card mb-4">
@@ -23,10 +31,10 @@
                         <div class="col-sm-10">
                             <div class="row g-3">
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" name="employee_id" placeholder="ID Karyawan" required>
+                                    <input type="text" class="form-control" name="employee_id" placeholder="ID Karyawan" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" name="name_user" placeholder="Nama Pengguna" required>
+                                    <input type="text" class="form-control" name="name_user" placeholder="Nama Pengguna" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-3">
                                     <select class="form-select" name="gender">
@@ -100,10 +108,10 @@
                         <thead>
                             <tr>
                                 <th data-priority="0">#</th>
-                                <th data-priority="0">Karyawan ID</th>
+                                <th data-priority="2">Karyawan ID</th>
                                 <th data-priority="1">Nama Pengguna</th>
-                                <th data-priority="1">Posisi</th>
-                                <th data-priority="2">Username</th>
+                                <th data-priority="5">Posisi</th>
+                                <th data-priority="4">Username</th>
                                 <th data-priority="3">Aksi</th>
                             </tr>
                         </thead>
@@ -117,7 +125,11 @@
                                     <td>{{ $user->username }}</td>
                                     <td>
                                         <a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                        <button class="btn btn-sm btn-danger">Hapus</button>
+                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST" class="d-inline-block form-destroy">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
