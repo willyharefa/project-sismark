@@ -21,7 +21,12 @@
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Customer</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" name="customer_id" required>
+                            <select class="form-select select-box-2" name="customer_id" required data-placeholder="Pilih customer">
+                                <option value=""></option>
+                                @foreach ($customers as $customer)
+                                    <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Buat Data</button>
@@ -53,7 +58,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $data->code_po_in }}</td>
-                                    <td>{{ $data->customer_id }}</td>
+                                    <td>{{ $data->customer->name }}</td>
                                     <td>
                                         @if ($data->status_po_in == "draf")
                                         <span class="badge bg-warning">{{ $data->status_po_in }}</span>

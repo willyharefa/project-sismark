@@ -38,7 +38,7 @@ class PricelistController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        
         $validatorData = Validator::make( $request->all(), [
             'stock_master_id' => [
                 'required',

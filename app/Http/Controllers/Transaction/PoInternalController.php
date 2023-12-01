@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Transaction;
 
 use App\Http\Controllers\Controller;
 use App\Models\Inventory\StockMaster;
+use App\Models\Partner\Customer;
 use App\Models\Sales\Pricelist;
 use App\Models\Transaction\PoInternal;
 use App\Models\Transaction\PoInternalItem;
@@ -17,7 +18,8 @@ class PoInternalController extends Controller
     public function index()
     {
         $poInternals = PoInternal::latest()->get();
-        return view('pages.transaction.po-internal.po-internal', compact('poInternals'));
+        $customers = Customer::with('branch')->get();
+        return view('pages.transaction.po-internal.po-internal', compact('poInternals', 'customers'));
     }
 
     /**
@@ -62,7 +64,6 @@ class PoInternalController extends Controller
         $products = StockMaster::latest()->get();
         $pricelists = Pricelist::with('stock_master', 'city')->latest()->get();
         $poInternalItem = PoInternalItem::where('po_internal_id', $poInternal->id)->with('po_internal', 'stock_master')->latest()->get();
-        // dd($poInternalItem);
         return view('pages.transaction.po-internal.po-internal-item', compact('poInternal', 'products', 'pricelists', 'poInternalItem'));
     }
 

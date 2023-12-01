@@ -6,6 +6,7 @@ use App\Helpers\AbbreviateNumber;
 use App\Imports\PricelistImport;
 use App\Imports\StockImport;
 use App\Models\Inventory\StockMaster;
+use App\Models\Transaction\Sppb;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -46,4 +47,5 @@ class Controller extends BaseController
         }
 
     }
+
 }

@@ -2,11 +2,14 @@
 
 namespace App\Models\Partner;
 
-use App\Models\Account\SalesUser;
+use App\Models\UserManagement\SalesUser;
 use App\Models\Backend\Branch;
+use App\Models\Transaction\PoInternal;
+use App\Models\Transaction\Sppb;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Customer extends Model
@@ -23,5 +26,15 @@ class Customer extends Model
     public function sales_user(): BelongsTo
     {
         return $this->belongsTo(SalesUser::class);
+    }
+
+    public function po_internal(): HasMany
+    {
+        return $this->hasMany(PoInternal::class, 'customer_id');
+    }
+
+    public function sppb(): HasMany
+    {
+        return $this->hasMany(Sppb::class, 'customer_id');
     }
 }

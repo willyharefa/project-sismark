@@ -2,25 +2,32 @@
 
 namespace App\Models\Transaction;
 
+use App\Models\Backend\Branch;
 use App\Models\Partner\Customer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class PoInternal extends Model
+class Sppb extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $tables = 'po_internal';
+    protected $tables = 'sppbs';
 
-    public function po_internal_item(): HasMany
+    public function branch(): HasOne
     {
-        return $this->hasMany(PoInternalItem::class, 'po_internal_id');
+        return $this->hasOne(Branch::class, 'id', 'branch_id');
     }
     
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function sppb_item(): HasMany
+    {
+        return $this->hasMany(SppbItem::class, 'sppb_id');
     }
 }

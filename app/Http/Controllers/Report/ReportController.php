@@ -9,6 +9,7 @@ use App\Models\Transaction\PoInternal;
 use App\Models\Transaction\PoInternalItem;
 use App\Models\Transaction\Quotation;
 use App\Models\Transaction\QuotationItem;
+use App\Models\Transaction\Sppb;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class ReportController extends Controller
@@ -63,5 +64,11 @@ class ReportController extends Controller
     
         return $pdf->stream('document.pdf');
         
+    }
+
+    public function sppbPrint(Sppb $sppb)
+    {
+        $pdf = Pdf::loadView('report.print-sppb', ['sppb' => $sppb])->setOption(['dpi' => 150, 'defaultFont' => 'arial, sans-serif'])->setPaper('a4', 'portrait');
+        return $pdf->stream('document.pdf');
     }
 }

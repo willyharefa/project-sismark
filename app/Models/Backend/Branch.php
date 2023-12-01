@@ -4,6 +4,7 @@ namespace App\Models\Backend;
 
 use App\Models\Partner\Customer;
 use App\Models\Transaction\Quotation;
+use App\Models\Transaction\Sppb;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -37,5 +38,10 @@ class Branch extends Model
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function sppb(): BelongsTo
+    {
+        return $this->belongsTo(Sppb::class);
     }
 }

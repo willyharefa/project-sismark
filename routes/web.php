@@ -10,6 +10,8 @@ use App\Http\Controllers\TaskManagement\ActivityController;
 use App\Http\Controllers\Transaction\PoInternalController;
 use App\Http\Controllers\Transaction\PoInternalItemController;
 use App\Http\Controllers\Transaction\QuotationController;
+use App\Http\Controllers\Transaction\SppbController;
+use App\Http\Controllers\Transaction\SppbItemController;
 use App\Http\Controllers\UserManagement\SalesUserController;
 use App\Http\Controllers\UserManagement\UserController;
 use Illuminate\Support\Facades\Route;
@@ -49,3 +51,10 @@ Route::put('po-internal-item/{id}/submit', [PoInternalController::class, 'poInte
 Route::get('po-internal-print/{id}', [ReportController::class, 'printPoInternal'])->name('printPoInternal');
 
 Route::resource('po-internal-item', PoInternalItemController::class);
+
+
+Route::resource('sppb', SppbController::class);
+Route::get('/sppb/{sppb}/detail', [SppbController::class, 'sppbDetail'])->name('sppbDetail');
+Route::put('/sppb/{sppb}/detail', [SppbController::class, 'sppbDetailSubmit'])->name('sppbDetailSubmit');
+Route::get('/sppb/{sppb}/print', [ReportController::class, 'sppbPrint'])->name('sppbPrint');
+Route::resource('sppb-item', SppbItemController::class);

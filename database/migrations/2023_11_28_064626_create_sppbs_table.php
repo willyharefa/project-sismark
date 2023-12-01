@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('po_internals', function (Blueprint $table) {
+        Schema::create('sppbs', function (Blueprint $table) {
             $table->id();
-            $table->string('code_po_in')->unique();
+            $table->string('code_sppb')->unique();
+            $table->string('no_po_cust');
+            $table->foreignId('branch_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('customer_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('created_by')->nullable();
-            $table->enum('status_po_in', ['draf', 'request', 'approved', 'close', 'reject'])->default('draf');
+            $table->string('created_by');
+            $table->enum('status_sppb', ['draf', 'request', 'approved', 'reject'])->default('draf');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('po_internals');
+        Schema::dropIfExists('sppbs');
     }
 };

@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="col-md-5">
                                     <input type="text" class="form-control" disabled
-                                        value="{{ $poInternal->customer_id }}" title="Nama Customer" required>
+                                        value="{{ $poInternal->customer->name }}" title="Nama Customer" required>
                                 </div>
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" disabled
