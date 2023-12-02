@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('sppb_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('stock_master_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('qty');
+            $table->decimal('price', 15,2)->default(0);
+            $table->decimal('total_price', 15, 2)->default(0);
             $table->foreignId('branch_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });

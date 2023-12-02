@@ -196,7 +196,7 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="javascript:void(0);" class="menu-link">
+                                <a href="{{ route('invoice.index') }}" class="menu-link">
                                     <div data-i18n="Connections">Invoice</div>
                                 </a>
                             </li>

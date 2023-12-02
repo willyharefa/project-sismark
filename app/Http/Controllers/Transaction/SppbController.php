@@ -8,6 +8,7 @@ use App\Models\Partner\Customer;
 use App\Models\Transaction\Sppb;
 use App\Models\Transaction\SppbItem;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class SppbController extends Controller
 {
@@ -45,7 +46,7 @@ class SppbController extends Controller
                 $generateNo = str_pad( $generateNo, 3, "0", STR_PAD_LEFT );
             }
 
-            $sppbNo = "SPPB/PKU/" . date('Y') . "/" . date('m') . "/" . $generateNo;
+            $sppbNo = "SPPB/PKU/" . date('y') . "/" . date('m') . "/" . $generateNo;
 
             $newData = Sppb::create([
                 'code_sppb' => $sppbNo,
@@ -99,9 +100,17 @@ class SppbController extends Controller
 
     public function sppbDetail(Sppb $sppb)
     {
-        $stock_masters = StockMaster::latest()->get();
-        $sppb_items = SppbItem::with('stock_master', 'sppb')->latest()->get();
-        return view('pages.transaction.sppb.sppb-item', compact('sppb', 'stock_masters', 'sppb_items'));
+        try {
+            $stock_masters = StockMaster::latest()->get();
+            $sppb_items = SppbItem::where('sppb_id', $sppb->id)->with('stock_master', 'sppb')->latest()->get();
+            // dd($sppb_items);
+            return view('pages.transaction.sppb.sppb-item', compact('sppb', 'stock_masters', 'sppb_items'));
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => '403',
+                'message' => 'Tidak dapat memproses permintaan',
+            ], Response::HTTP_FORBIDDEN);
+        }
     }
 
     public function sppbDetailSubmit(Sppb $sppb)

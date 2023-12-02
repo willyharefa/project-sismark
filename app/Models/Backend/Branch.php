@@ -3,6 +3,7 @@
 namespace App\Models\Backend;
 
 use App\Models\Partner\Customer;
+use App\Models\Transaction\InvoiceToSppb;
 use App\Models\Transaction\Quotation;
 use App\Models\Transaction\Sppb;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -43,5 +44,10 @@ class Branch extends Model
     public function sppb(): BelongsTo
     {
         return $this->belongsTo(Sppb::class);
+    }
+
+    public function invoice_to_sppb(): BelongsTo
+    {
+        return $this->belongsTo(InvoiceToSppb::class);
     }
 }

@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sppbs', function (Blueprint $table) {
+        Schema::create('invoice_to_sppbs', function (Blueprint $table) {
             $table->id();
-            $table->string('code_sppb')->unique();
-            $table->string('no_po_cust');
+            $table->foreignId('invoice_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('sppb_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('branch_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('customer_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('created_by');
-            $table->enum('status_sppb', ['draf', 'request', 'approved', 'reject'])->default('draf');
-            $table->boolean('used')->default(false);
             $table->timestamps();
         });
     }
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sppbs');
+        Schema::dropIfExists('invoice_to_sppbs');
     }
 };

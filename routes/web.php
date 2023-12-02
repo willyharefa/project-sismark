@@ -7,6 +7,8 @@ use App\Http\Controllers\Report\ReportController;
 use App\Http\Controllers\Sales\PricelistController;
 use App\Http\Controllers\TaskManagement\ProgressController;
 use App\Http\Controllers\TaskManagement\ActivityController;
+use App\Http\Controllers\Transaction\InvoiceController;
+use App\Http\Controllers\Transaction\InvoiceToSppbController;
 use App\Http\Controllers\Transaction\PoInternalController;
 use App\Http\Controllers\Transaction\PoInternalItemController;
 use App\Http\Controllers\Transaction\QuotationController;
@@ -14,6 +16,8 @@ use App\Http\Controllers\Transaction\SppbController;
 use App\Http\Controllers\Transaction\SppbItemController;
 use App\Http\Controllers\UserManagement\SalesUserController;
 use App\Http\Controllers\UserManagement\UserController;
+use App\Models\Partner\Customer;
+use App\Models\Transaction\Sppb;
 use Illuminate\Support\Facades\Route;
 
 
@@ -58,3 +62,26 @@ Route::get('/sppb/{sppb}/detail', [SppbController::class, 'sppbDetail'])->name('
 Route::put('/sppb/{sppb}/detail', [SppbController::class, 'sppbDetailSubmit'])->name('sppbDetailSubmit');
 Route::get('/sppb/{sppb}/print', [ReportController::class, 'sppbPrint'])->name('sppbPrint');
 Route::resource('sppb-item', SppbItemController::class);
+
+Route::resource('invoice', InvoiceController::class);
+Route::resource('invoice-to-sppb', InvoiceToSppbController::class);
+Route::get('/invoice-to-sppb/{sppbItem}/price/{invoice}', [InvoiceToSppbController::class, 'editSppbItemPrice'])->name('editSppbItemPrice');
+Route::put('/invoice-top-sppb/{sppbItem}/price', [InvoiceToSppbController::class, 'updateSppbItemPrice'])->name('updateSppbItemPrice');
+
+// Route::view('/invoice/item', 'pages.invoice.invoice-item');
+Route::get('/testing', function() {
+    $data = Sppb::where('customer_id', 1)->with('sppb_item')->get();
+    // $dataSppb = $data->sppb;
+    $sumQty = null;
+    foreach ($data as $item) {
+        foreach ($item->sppb_item as $value) {
+            // $sumQty += $value->qty;
+            echo($value->stock_master->name_stock);
+        }
+        
+    }
+
+    // dd($sumQty);
+
+
+});

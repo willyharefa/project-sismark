@@ -144,7 +144,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5>Daftar Item</h5>
-                @if ($sppb_items !== null)
+                @if ($sppb_items !== null && $sppb_items->isNotEmpty())
                     @if ($sppb->status_sppb == "draf")
                         <form action="{{ route('sppbDetailSubmit', $sppb->id) }}" method="POST" class="form-submit-item-quo">
                             @csrf

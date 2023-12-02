@@ -4,6 +4,7 @@ namespace App\Models\Partner;
 
 use App\Models\UserManagement\SalesUser;
 use App\Models\Backend\Branch;
+use App\Models\Transaction\Invoice;
 use App\Models\Transaction\PoInternal;
 use App\Models\Transaction\Sppb;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -36,5 +37,10 @@ class Customer extends Model
     public function sppb(): HasMany
     {
         return $this->hasMany(Sppb::class, 'customer_id');
+    }
+
+    public function invoice(): HasMany
+    {
+        return $this->hasMany(Invoice::class, 'customer_id');
     }
 }
