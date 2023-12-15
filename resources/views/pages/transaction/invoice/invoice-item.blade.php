@@ -139,19 +139,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($invoiceToSppbData as $data)
+                        @foreach ($invoiceToSppbData as $row)
+                            @foreach ($row->sppb as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $data->sppb->code_sppb }}</td>
-                                <td>{{ $data->created_at }}</td>
+                                <td>{{ $item->code_sppb }}</td>
+                                <td>{{ $row->created_at }}</td>
                                 <td>
-                                    <form action="{{ route('invoice-to-sppb.destroy', $data->id) }}" method="POST" class="form-destroy">
+                                    <form action="{{ route('invoice-to-sppb.destroy', $row->id) }}" method="POST" class="form-destroy">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                     </form>
                                 </td>
                             </tr>
+                            @endforeach
                         @endforeach
                     </tbody>
                 </table>
@@ -163,11 +165,13 @@
         <div class="card mb-4">
             <div class="card-header">
                 <h5>Invoice Item</h5>
+                @if ($sppbUsed !== null && $sppbUsed->isNotEmpty())
                 <form action="{{ route('invoice.update', $invoice->id) }}" method="POST" class="form-create">
                     @csrf
                     @method('PUT')
-                    <button type="submit" class="btn btn-sm btn-primary">submit</button>
+                    <button type="submit" class="btn btn-sm btn-outline-primary">Submit Items</button>
                 </form>
+                @endif
             </div>
             <div class="card-body">
                 <table class="table table-bordered table-striped" style="width: 100%">
@@ -183,20 +187,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($sppbUsed as $sppb)
-                            @foreach ($sppb->sppb_item as $data)
-                                
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $data->stock_master->code_stock }}</td>
-                                    <td>{{ $data->stock_master->name_stock }}</td>
-                                    <td>{{ number_format($data->qty, 0, ",", "."); }}</td>
-                                    <td>{{ 'Rp ' . number_format($data->price, 2, ",", "."); }}</td>
-                                    <td>{{ 'Rp ' . number_format($data->total_price, 2, ",", "."); }}</td>
-                                    <td>
-                                        <a href="{{ route('editSppbItemPrice', ['sppbItem' => $data->id, 'invoice' => $invoice->id]) }}" class="btn btn-sm btn-info">Update</a>
-                                    </td>
-                                </tr>
+                        <?php $number = 1; ?>
+                        @foreach ($invoiceToSppbData as $key => $invoiceToSppb)
+                            @foreach ($invoiceToSppb->sppb->flatMap->sppb_item as $data)
+                            <tr>
+                                <td>{{ $number }}</td>
+                                <td>{{ $data->stock_master->code_stock }}</td>
+                                <td>{{ $data->stock_master->name_stock }}</td>
+                                <td>{{ number_format($data->qty, 0, ",", "."); }}</td>
+                                <td>{{ 'Rp ' . number_format($data->price, 2, ",", "."); }}</td>
+                                <td>{{ 'Rp ' . number_format($data->total_price, 2, ",", "."); }}</td>
+                                <td>
+                                    <a href="{{ route('editSppbItemPrice', ['sppbItem' => $data->id, 'invoice' => $invoice->id]) }}" class="btn btn-sm btn-info">Update</a>
+                                </td>
+                            </tr>
+                            <?php $number++; ?>
                             @endforeach
                         @endforeach
                     </tbody>

@@ -8,6 +8,7 @@ use App\Models\Transaction\Invoice;
 use App\Models\Transaction\InvoiceToSppb;
 use App\Models\Transaction\Sppb;
 use App\Models\Transaction\SppbItem;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -76,12 +77,20 @@ class InvoiceController extends Controller
         $sppbData = Sppb::where('customer_id', $invoice->customer_id)
                     ->where('used', false)
                     ->with('customer', 'sppb_item')->latest()->get();
-        $sppbUsed = Sppb::where('customer_id', $invoice->customer_id)
-                    ->where('used', true)
-                    ->with('customer', 'sppb_item')->latest()->get();
 
-        // $invoiceToSppb = In
+        //Mengambil data dari table InvoiceToSppb -> sppb dengan referensi customer id dan used true
+        $sppbUsed = InvoiceToSppb::where('invoice_id', $invoice->id)
+                                    ->whereHas('sppb', function (Builder $query) use ($invoice) {
+                                            $query->where('customer_id', $invoice->customer_id)
+                                                  ->where('used', true);
+                                                //   ->with('sppb_item');
+                                            })
+                                    ->with('invoice', 'sppb')->latest()->get();
+                                
         $invoiceToSppbData = InvoiceToSppb::where('invoice_id', $invoice->id)->with('sppb', 'branch')->latest()->get();
+
+        // dd($sppbUsed->sppb);
+        
         return view('pages.transaction.invoice.invoice-item', compact('invoice', 'sppbData', 'sppbUsed', 'invoiceToSppbData'));
     }
 
@@ -103,7 +112,15 @@ class InvoiceController extends Controller
                     ->where('used', true)
                     ->with('customer', 'sppb_item')->latest()->get();
 
-        $sumPrice = $sppbUsed->flatMap->sppb_item->sum('total_price');
+                    // dd($sppbUsed);
+        // Untuk menjumlahkan total price sppb item dengan mencari data berdasarkan invoiceToSppb
+        $invoiceToSppb = InvoiceToSppb::where('invoice_id', $invoice->id)
+                        ->whereHas('sppb', function (Builder $query) use ($invoice) {
+                            $query->where('customer_id', $invoice->customer_id)
+                            ->with('sppb_item');
+                        })->with('sppb')->get();
+
+        $sumPrice = $invoiceToSppb->flatMap->sppb->flatMap->sppb_item->sum('total_price');
 
         $invoice->update([
             'total_inv' => $sumPrice,

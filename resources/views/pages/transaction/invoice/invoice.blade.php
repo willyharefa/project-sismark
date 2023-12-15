@@ -105,7 +105,17 @@
                                     <td>{{ $invoice->code_inv }}</td>
                                     <td>{{ $invoice->customer->name }}</td>
                                     <td>{{ $invoice->no_po_cust }}</td>
-                                    <td>{{ $invoice->status_inv }}</td>
+                                    <td>
+                                        @if ($invoice->status_inv == "draf")
+                                            <span class="badge bg-warning bx-flashing">{{ $invoice->status_inv }}</span>    
+                                        @elseif ($invoice->status_inv == "request")
+                                            <span class="badge bg-info">{{ $invoice->status_inv }}</span>    
+                                        @elseif ($invoice->status_inv == "approved")
+                                            <span class="badge bg-success text-black">{{ $invoice->status_inv }}</span>
+                                        @else
+                                            <span class="badge bg-danger text-black">{{ $invoice->status_inv }}</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $invoice->created_by }}</td>
                                     <td>{{ 'Rp  '. number_format($invoice->total_inv, 2, ',', '.') }}</td>
                                     <td>

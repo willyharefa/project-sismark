@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\AbbreviateNumber;
-use App\Imports\PricelistImport;
-use App\Imports\StockImport;
-use App\Models\Inventory\StockMaster;
-use App\Models\Transaction\Sppb;
 use Exception;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Imports\StockImport;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
+use App\Imports\PricelistImport;
+use App\Helpers\AbbreviateNumber;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Inventory\StockMaster;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
@@ -20,8 +20,35 @@ class Controller extends BaseController
     
     public function index()
     {
+        $chart = (new LarapexChart)->lineChart()->setTitle('Penjualan Sales Marketing')
+                    ->setSubtitle('PT Mito Energi Indonesia')
+                    ->setHeight(345)
+                    ->addData('Sales Marketing', [1000000, 2500000, 5000000, 6700000, 1520000])
+                    ->setXAxis(['Jan', 'Feb', 'March', 'April', 'May', 'June']);
+        
+        $productChart = (new LarapexChart)->pieChart()
+                        ->setTitle('Graph Product Sales')
+                        ->setSubtitle('Season 2023')
+                        ->setHeight(200)
+                        ->addData([31, 4])
+                        ->setLabels(['General Chemical', 'Specialty Chemical']);
+        
+        $salesMarketingChart = (new LarapexChart)->pieChart()
+                        ->setTitle('Market Sales Marketing')
+                        ->setSubtitle('Season 2023')
+                        ->setHeight(200)
+                        ->addData([21, 17, 121, 60])
+                        ->setLabels(['Yudha Satria', 'Sintia Lestari', 'Mito', 'Erton']);
+
+        $marketSalesBranchChart = (new LarapexChart)->pieChart()
+                        ->setTitle('Market Sales All Office')
+                        ->setSubtitle('Season 2023')
+                        ->setHeight(200)
+                        ->addData([134, 47, 58])
+                        ->setLabels(['HO PT MEI', 'Medan', 'Pontianak']);
+
         $sumProduct = AbbreviateNumber::abbreviate(StockMaster::count());
-        return view("components.app.dashboard", compact("sumProduct"));
+        return view("components.app.dashboard", compact('sumProduct', 'chart', 'productChart', 'salesMarketingChart', 'marketSalesBranchChart'));
     }
 
     public function importFileExcel(Request $request)

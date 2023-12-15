@@ -59,6 +59,7 @@
                         </div>
                         <div class="col mb-3">
                             <input type="hidden" name="invoice_id" value="{{ $invoice->id }}">
+                            <a href="{{ route('invoice.show', $invoice->id) }}" class="btn btn-secondary">Kembali</a>
                             <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>

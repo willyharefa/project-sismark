@@ -81,7 +81,15 @@
                                     <td>{{ $sppb->no_po_cust }}</td>
                                     <td>{{ $sppb->customer->name }}</td>
                                     <td>
-                                        <span class="badge bg-info">{{ $sppb->status_sppb }}</span>
+                                        @if ($sppb->status_sppb == "draf")
+                                            <span class="badge bg-warning">{{ $sppb->status_sppb }}</span>    
+                                        @elseif ($sppb->status_sppb == "request")
+                                            <span class="badge bg-info">{{ $sppb->status_sppb }}</span>    
+                                        @elseif ($sppb->status_sppb == "approved")
+                                            <span class="badge bg-success text-black">{{ $sppb->status_sppb }}</span>
+                                        @else
+                                            <span class="badge bg-danger text-black">{{ $sppb->status_sppb }}</span>
+                                        @endif
                                     </td>
                                     <td>{{ $sppb->created_by }}</td>
                                     <td>

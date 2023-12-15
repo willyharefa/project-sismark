@@ -4,11 +4,13 @@ namespace App\Models\Transaction;
 
 use App\Models\Backend\Branch;
 use App\Models\Partner\Customer;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Transaction\SppbItem;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Transaction\InvoiceToSppb;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Sppb extends Model
 {
