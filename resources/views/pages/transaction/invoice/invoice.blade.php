@@ -93,8 +93,8 @@
                                 <th data-priority="3">Customer</th>
                                 <th data-priority="1">PO Customer</th>
                                 <th data-priority="5">Status</th>
-                                <th data-priority="6">Dibuat oleh</th>
-                                <th>Total Invoice</th>
+                                <th>Dibuat oleh</th>
+                                <th data-priority="6">Total Invoice</th>
                                 <th data-priority="4">Aksi</th>
                             </tr>
                         </thead>

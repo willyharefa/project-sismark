@@ -71,60 +71,61 @@
         <div class="card mb-4">
             <div class="card-header">
                 <h5>SPPB List</h5>
-
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSPPBList">
-                    Tambah SPPB
-                </button>
-                
-                <div class="modal fade" id="modalSPPBList" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-xl">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Daftar SPPB</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-striped text-nowrap" style="width: 100%">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Nomor SPPB</th>
-                                                <th>Nomor PO</th>
-                                                <th>Dibuat Oleh</th>
-                                                <th>Tanggal Input</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($sppbData as $sppb)
-                                                <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $sppb->code_sppb }}</td>
-                                                    <td>{{ $sppb->no_po_cust }}</td>
-                                                    <td>{{ $sppb->created_by }}</td>
-                                                    <td>{{ $sppb->created_at }}</td>
-                                                    <td>
-                                                        <form action="{{ route('invoice-to-sppb.store') }}" class="form-create" method="POST">
-                                                            @csrf
-                                                            @method('POST')
-                                                            <input type="hidden" name="sppb_id" value="{{ $sppb->id }}">
-                                                            <input type="hidden" name="invoice_id" value="{{ $invoice->id }}">
-                                                            <button type="submit" class="btn btn-sm btn-primary">Pilih</button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                @if ($invoice->status_inv == 'draf')
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSPPBList">
+                        Tambah SPPB
+                    </button>
+                    
+                    <div class="modal fade" id="modalSPPBList" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Daftar SPPB</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <div class="modal-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped text-nowrap" style="width: 100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Nomor SPPB</th>
+                                                    <th>Nomor PO</th>
+                                                    <th>Dibuat Oleh</th>
+                                                    <th>Tanggal Input</th>
+                                                    <th>Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($sppbData as $sppb)
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $sppb->code_sppb }}</td>
+                                                        <td>{{ $sppb->no_po_cust }}</td>
+                                                        <td>{{ $sppb->created_by }}</td>
+                                                        <td>{{ $sppb->created_at }}</td>
+                                                        <td>
+                                                            <form action="{{ route('invoice-to-sppb.store') }}" class="form-create" method="POST">
+                                                                @csrf
+                                                                @method('POST')
+                                                                <input type="hidden" name="sppb_id" value="{{ $sppb->id }}">
+                                                                <input type="hidden" name="invoice_id" value="{{ $invoice->id }}">
+                                                                <button type="submit" class="btn btn-sm btn-primary">Pilih</button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
 
             </div>
 
@@ -145,11 +146,13 @@
                                 <td>{{ $data->sppb->code_sppb }}</td>
                                 <td>{{ $data->created_at }}</td>
                                 <td>
-                                    <form action="{{ route('invoice-to-sppb.destroy', $data->id) }}" method="POST" class="form-destroy">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                    </form>
+                                    @if ($invoice->status_inv == 'draf')
+                                        <form action="{{ route('invoice-to-sppb.destroy', $data->id) }}" method="POST" class="form-destroy">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -163,11 +166,13 @@
         <div class="card mb-4">
             <div class="card-header">
                 <h5>Invoice Item</h5>
-                <form action="{{ route('invoice.update', $invoice->id) }}" method="POST" class="form-create">
-                    @csrf
-                    @method('PUT')
-                    <button type="submit" class="btn btn-sm btn-primary">submit</button>
-                </form>
+                @if ($invoice->status_inv == 'draf' && $sppbUsed->isNotEmpty())
+                    <form action="{{ route('invoice.update', $invoice->id) }}" method="POST" class="form-create">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" class="btn btn-sm btn-primary">Submit Item</button>
+                    </form>
+                @endif
             </div>
             <div class="card-body">
                 <table class="table table-bordered table-striped" style="width: 100%">
@@ -183,9 +188,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($sppbUsed as $sppb)
+                        @foreach ($sppbUsed as $sppb)  
                             @foreach ($sppb->sppb_item as $data)
-                                
+                                {{-- @dd($data) --}}
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $data->stock_master->code_stock }}</td>
@@ -194,7 +199,9 @@
                                     <td>{{ 'Rp ' . number_format($data->price, 2, ",", "."); }}</td>
                                     <td>{{ 'Rp ' . number_format($data->total_price, 2, ",", "."); }}</td>
                                     <td>
-                                        <a href="{{ route('editSppbItemPrice', ['sppbItem' => $data->id, 'invoice' => $invoice->id]) }}" class="btn btn-sm btn-info">Update</a>
+                                        @if ($invoice->status_inv == 'draf')
+                                            <a href="{{ route('editSppbItemPrice', ['sppbItem' => $data->id, 'invoice' => $invoice->id]) }}" class="btn btn-sm btn-info">Update</a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

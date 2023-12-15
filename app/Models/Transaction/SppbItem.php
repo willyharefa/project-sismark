@@ -17,7 +17,7 @@ class SppbItem extends Model
 
     public function sppb(): BelongsTo
     {
-        return $this->belongsTo(Sppb::class);
+        return $this->belongsTo(Sppb::class, 'id');
     }
 
     public function stock_master(): HasOne

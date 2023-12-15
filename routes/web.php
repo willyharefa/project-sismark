@@ -17,6 +17,8 @@ use App\Http\Controllers\Transaction\SppbItemController;
 use App\Http\Controllers\UserManagement\SalesUserController;
 use App\Http\Controllers\UserManagement\UserController;
 use App\Models\Partner\Customer;
+use App\Models\Transaction\Invoice;
+use App\Models\Transaction\InvoiceToSppb;
 use App\Models\Transaction\Sppb;
 use Illuminate\Support\Facades\Route;
 
@@ -69,19 +71,3 @@ Route::get('/invoice-to-sppb/{sppbItem}/price/{invoice}', [InvoiceToSppbControll
 Route::put('/invoice-top-sppb/{sppbItem}/price', [InvoiceToSppbController::class, 'updateSppbItemPrice'])->name('updateSppbItemPrice');
 
 // Route::view('/invoice/item', 'pages.invoice.invoice-item');
-Route::get('/testing', function() {
-    $data = Sppb::where('customer_id', 1)->with('sppb_item')->get();
-    // $dataSppb = $data->sppb;
-    $sumQty = null;
-    foreach ($data as $item) {
-        foreach ($item->sppb_item as $value) {
-            // $sumQty += $value->qty;
-            echo($value->stock_master->name_stock);
-        }
-        
-    }
-
-    // dd($sumQty);
-
-
-});

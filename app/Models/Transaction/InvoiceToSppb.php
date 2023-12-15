@@ -14,9 +14,9 @@ class InvoiceToSppb extends Model
     protected $guarded = ['id'];
     protected $tables = 'invoice_to_sppbs';
 
-    public function sppb(): HasOne
+    public function sppb(): BelongsTo
     {
-        return $this->hasOne(Sppb::class, 'id', 'sppb_id');
+        return $this->belongsTo(Sppb::class);
     }
     
     public function branch(): HasOne

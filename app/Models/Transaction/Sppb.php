@@ -31,8 +31,8 @@ class Sppb extends Model
         return $this->hasMany(SppbItem::class, 'sppb_id');
     }
 
-    public function invoice_to_sppb(): BelongsTo
+    public function invoice_to_sppb(): hasMany
     {
-        return $this->belongsTo(InvoiceToSppb::class);
+        return $this->hasMany(InvoiceToSppb::class, 'sppb_id');
     }
 }

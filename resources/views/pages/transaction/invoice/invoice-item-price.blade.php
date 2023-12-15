@@ -18,6 +18,7 @@
 
         {{-- card update price invoice item --}}
         <div class="col-md-7">
+            @if ($invoice->status_inv == 'draf')
             <div class="card mb-4">
                 <div class="card-header">
                     <h5>Masukan Harga Invoice</h5>
@@ -64,6 +65,12 @@
                     </form>
                 </div>
             </div>
+            @else
+            <div class="alert alert-info text-black" role="alert">
+                Invoice telah berstatus Request, data tidak dapat di edit! Klik tombol "Kembali".
+            </div>
+            <a href="{{ route('invoice.index') }}" class="btn btn-secondary">Kembali</a>
+            @endif
         </div>
         {{-- End update price invoice item --}}
     </div>

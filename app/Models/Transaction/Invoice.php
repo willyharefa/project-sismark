@@ -21,6 +21,6 @@ class Invoice extends Model
 
     public function invoice_to_sppb(): HasMany
     {
-        return $this->hasMany(InvoiceToSppb::class, 'id', 'invoice_id');
+        return $this->hasMany(InvoiceToSppb::class, 'invoice_id');
     }
 }

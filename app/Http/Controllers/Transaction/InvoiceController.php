@@ -76,11 +76,11 @@ class InvoiceController extends Controller
         $sppbData = Sppb::where('customer_id', $invoice->customer_id)
                     ->where('used', false)
                     ->with('customer', 'sppb_item')->latest()->get();
-        $sppbUsed = Sppb::where('customer_id', $invoice->customer_id)
-                    ->where('used', true)
-                    ->with('customer', 'sppb_item')->latest()->get();
 
-        // $invoiceToSppb = In
+        $sppbUsed = Sppb::whereHas('invoice_to_sppb', function ($query) use ($invoice) {
+                        $query->where('invoice_id', $invoice->id);})
+                    ->where('used', true)->get();
+        // dd($sppbUsed);
         $invoiceToSppbData = InvoiceToSppb::where('invoice_id', $invoice->id)->with('sppb', 'branch')->latest()->get();
         return view('pages.transaction.invoice.invoice-item', compact('invoice', 'sppbData', 'sppbUsed', 'invoiceToSppbData'));
     }
