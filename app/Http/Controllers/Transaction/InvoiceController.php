@@ -8,6 +8,7 @@ use App\Models\Transaction\Invoice;
 use App\Models\Transaction\InvoiceToSppb;
 use App\Models\Transaction\Sppb;
 use App\Models\Transaction\SppbItem;
+use App\Models\UserManagement\SalesUser;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,7 @@ class InvoiceController extends Controller
     {
         $customers = Customer::latest()->get();
         $invoices = Invoice::with('customer')->latest()->get();
+        $salesUsers = SalesUser::with('user')->latest()->get();
         return view('pages.transaction.invoice.invoice', compact('customers', 'invoices'));
     }
 

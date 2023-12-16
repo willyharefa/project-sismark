@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('address_delivery');
             $table->decimal('ppn', 15,2)->default(0 );
             $table->decimal('total_inv', 15,2)->default(0);
-            $table->string('sales_user_id');
+            $table->foreignId('sales_user_id')->constrained()->cascadeOnUpdate()->cascadeOnUpdate();
             $table->enum('status_inv', ['draf', 'request', 'approved', 'reject'])->default('draf');
             $table->timestamps();
         });

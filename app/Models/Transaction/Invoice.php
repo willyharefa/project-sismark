@@ -3,6 +3,7 @@
 namespace App\Models\Transaction;
 
 use App\Models\Partner\Customer;
+use App\Models\UserManagement\SalesUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,5 +23,10 @@ class Invoice extends Model
     public function invoice_to_sppb(): HasMany
     {
         return $this->hasMany(InvoiceToSppb::class, 'id', 'invoice_id');
+    }
+
+    public function sales_user(): HasMany
+    {
+        return $this->hasMany(SalesUser::class, 'id', 'sales_users');
     }
 }
