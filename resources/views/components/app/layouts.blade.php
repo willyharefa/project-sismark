@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <meta name="description" content="" />
     <title>{{ $menu_title ?? config('app.name') }}</title>
     @stack('style')
-    @Vite('resources/js/style.js')
+    @Vite(['resources/js/style.js'])
     <link rel="stylesheet" href="{{ Vite::asset('resources/css/loader.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ Vite::asset('resources/assets/img/favicon/mito.png') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -203,65 +203,6 @@
                         </ul>
                     </li>
 
-                    {{-- Setting --}}
-                    {{-- <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">Environment</span>
-                    </li>
-
-                    <li class="menu-item {{ $state_menu == "setting" ? "active open" : "" }}">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-folder"></i>
-                            <div>Settings</div>
-                        </a>
-
-                        <ul class="menu-sub">
-                            <li class="menu-item {{ $menu_title == "Branches Setting" ? "active bx-flashing" : "" }}">
-                                <a href="{{ route('branch.index') }}" class="menu-link">
-                                    <div>Branch</div>
-                                </a>
-                            </li>
-                            <li class="menu-item {{ $menu_title == "Type Customer Setting" ? "active bx-flashing" : "" }}">
-                                <a href="{{ route('type-customer.index') }}" class="menu-link">
-                                    <div>Customers</div>
-                                </a>
-                            </li>
-                            <li class="menu-item {{ $menu_title == "Type Progress Setting" ? "active bx-flashing" : "" }}">
-                                <a href="{{ route('type-progress.index') }}" class="menu-link">
-                                    <div>Progress</div>
-                                </a>
-                            </li>
-                            <li class="menu-item {{ $menu_title == "Menu Position" ? "active bx-flashing" : "" }}">
-                                <a href="{{ route('position.index') }}" class="menu-link">
-                                    <div>Position</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="menu-item {{ $state_menu == "authentication" ? "active open" : "" }}">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-folder"></i>
-                            <div>Authentication</div>
-                        </a>
-
-                        <ul class="menu-sub">
-                            <li class="menu-item {{ $menu_title == "Menu Users" ? "active bx-flashing" : "" }}">
-                                <a href="{{ route('user.index') }}" class="menu-link">
-                                    <div>Users</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="javascript:void(0);" class="menu-link">
-                                    <div>Role</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="javascript:void(0);" class="menu-link">
-                                    <div>Permission</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li> --}}
                     {{-- End Setting --}}
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Administrator</span>

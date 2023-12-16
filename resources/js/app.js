@@ -11,7 +11,7 @@ import '../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar';
 import './select-box';
 import './number';
 import '../assets/vendor/js/menu';
-import '..//assets/vendor/libs/apex-charts/apexcharts';
+// import '..//assets/vendor/libs/apex-charts/apexcharts';
 import '../assets/js/main';
 import '../assets/js/ui-popover.js';
 import './confirm';

@@ -114,7 +114,7 @@
             <div class="row g-3">
                 <!-- Order Statistics -->
                 <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
-                    <div class="card h-100">
+                    <div class="card">
                         <div class="card-header d-flex align-items-center justify-content-between pb-0">
                             <div class="card-title mb-0">
                                 <h5 class="m-0 me-2">Order Statistics</h5>
@@ -209,9 +209,17 @@
 
                 {{-- Market Progress Activity --}}
                 <div class="col-md-6 col-lg-4 order-1 mb-4">
-                    <div class="card h-100">
-                        <div class="card-header pb-0">
-                            <h5 class="m-0 mb-2">Marketing Progress Terbaru</h5>
+                    <div class="card">
+                        <div class="card-header pb-0 d-flex align-items-center justify-content-between">
+                            <h5 class="card-title m-0 mb-2 me-2">Marketing Progress Terbaru</h5>
+                            <div class="dropdown">
+                                <button class="btn p-0" type="button" id="transactionID" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="javascript:void(0);">Lihat Selengkapnya</a>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="nav-align-top mb-4">
@@ -320,37 +328,91 @@
                                         </ul>
                                     </div>
                                     <div class="tab-pane fade" id="nav-pills-tab-mdn" role="tabpanel">
-                                        <p>
-                                            Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat
-                                            cake ice
-                                            cream. Gummies
-                                            halvah
-                                            tootsie roll muffin biscuit icing dessert gingerbread. Pastry ice cream
-                                            cheesecake
-                                            fruitcake.
-                                        </p>
-                                        <p class="mb-0">
-                                            Jelly-o jelly beans icing pastry cake cake lemon drops. Muffin muffin pie
-                                            tiramisu
-                                            halvah cotton candy
-                                            liquorice caramels.
-                                        </p>
+                                        <ul class="p-0 m-0">
+                                            <li class="d-flex mb-4">
+                                                <div class="avatar flex-shrink-0 me-3 pe-none">
+                                                    <span class="avatar-initial rounded bg-label-primary">
+                                                        <i class='bx bx-user-circle'></i>
+                                                    </span>
+                                                </div>
+                                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                                    <div class="me-2">
+                                                        <small class="text-muted d-block mb-1">Hendra</small>
+                                                        <h6 class="mb-0">PT Swis Berlin</h6>
+                                                    </div>
+                                                    <div class="user-progress d-flex align-items-center gap-1">
+                                                        <span class="text-muted">Plantest</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex mb-4">
+                                                <div class="avatar flex-shrink-0 me-3 pe-none">
+                                                    <span class="avatar-initial rounded bg-label-primary">
+                                                        <i class='bx bx-user-circle'></i>
+                                                    </span>
+                                                </div>
+                                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                                    <div class="me-2">
+                                                        <small class="text-muted d-block mb-1">Nita</small>
+                                                        <h6 class="mb-0">PT Bumi Citra Prima</h6>
+                                                    </div>
+                                                    <div class="user-progress d-flex align-items-center gap-1">
+                                                        <span class="text-muted">Penetrasi</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex mb-4">
+                                                <div class="avatar flex-shrink-0 me-3 pe-none">
+                                                    <span class="avatar-initial rounded bg-label-primary">
+                                                        <i class='bx bx-user-circle'></i>
+                                                    </span>
+                                                </div>
+                                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                                    <div class="me-2">
+                                                        <small class="text-muted d-block mb-1">Rozi</small>
+                                                        <h6 class="mb-0">CV Manhanttan</h6>
+                                                    </div>
+                                                    <div class="user-progress d-flex align-items-center gap-1">
+                                                        <span class="text-muted">Maintenance</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex mb-4">
+                                                <div class="avatar flex-shrink-0 me-3 pe-none">
+                                                    <span class="avatar-initial rounded bg-label-primary pe-none">
+                                                        <i class='bx bx-user-circle'></i>
+                                                    </span>
+                                                </div>
+                                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                                    <div class="me-2">
+                                                        <small class="text-muted d-block mb-1">Rozi</small>
+                                                        <h6 class="mb-0">PT Abadi Cemerlang</h6>
+                                                    </div>
+                                                    <div class="user-progress d-flex align-items-center gap-1">
+                                                        <span class="text-muted">Mapping</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex mb-4">
+                                                <div class="avatar flex-shrink-0 me-3 pe-none">
+                                                    <span class="avatar-initial rounded bg-label-primary">
+                                                        <i class='bx bx-user-circle'></i>
+                                                    </span>
+                                                </div>
+                                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                                    <div class="me-2">
+                                                        <small class="text-muted d-block mb-1">Nita</small>
+                                                        <h6 class="mb-0">PT Bank Usaha Ma..</h6>
+                                                    </div>
+                                                    <div class="user-progress d-flex align-items-center gap-1">
+                                                        <span class="text-muted">Introduction</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </div>
                                     <div class="tab-pane fade" id="nav-pills-tab-pnk" role="tabpanel">
-                                        <p>
-                                            Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat
-                                            cake ice
-                                            cream. Gummies
-                                            halvah
-                                            tootsie roll muffin biscuit icing dessert gingerbread. Pastry ice cream
-                                            cheesecake
-                                            fruitcake.
-                                        </p>
-                                        <p class="mb-0">
-                                            Jelly-o jelly beans icing pastry cake cake lemon drops. Muffin muffin pie
-                                            tiramisu
-                                            halvah cotton candy
-                                            liquorice caramels.
+                                        <div class="alert alert-info">Data marketing masih kosong!</div>
                                         </p>
                                     </div>
                                     <!--/ Expense Overview -->
@@ -362,20 +424,18 @@
                     <div class="content-backdrop fade"></div>
                 </div>
 
-                <!-- Transactions -->
+                <!-- Purchase Order In -->
                 <div class="col-md-6 col-lg-4 order-2 mb-4">
-                    <div class="card h-100">
+                    <div class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="card-title m-0 me-2">Transactions</h5>
+                            <h5 class="card-title m-0 me-2">Purchase Order In</h5>
                             <div class="dropdown">
                                 <button class="btn p-0" type="button" id="transactionID" data-bs-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
-                                    <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Lihat Selengkapnya</a>
                                 </div>
                             </div>
                         </div>
@@ -383,13 +443,14 @@
                             <ul class="p-0 m-0">
                                 <li class="d-flex mb-4 pb-1">
                                     <div class="avatar flex-shrink-0 me-3">
-                                        <img src="../assets/img/icons/unicons/paypal.png" alt="User"
-                                            class="rounded" />
+                                        <span class="avatar-initial rounded bg-label-primary">
+                                            <i class='bx bxs-cart-add' ></i>
+                                        </span>
                                     </div>
                                     <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                         <div class="me-2">
-                                            <small class="text-muted d-block mb-1">Paypal</small>
-                                            <h6 class="mb-0">Send money</h6>
+                                            <small class="text-muted d-block mb-1">POI/PKU/23/12/001</small>
+                                            <h6 class="mb-0">PT Intan Cemerlang</h6>
                                         </div>
                                         <div class="user-progress d-flex align-items-center gap-1">
                                             <h6 class="mb-0">+82.6</h6>
@@ -399,80 +460,68 @@
                                 </li>
                                 <li class="d-flex mb-4 pb-1">
                                     <div class="avatar flex-shrink-0 me-3">
-                                        <img src="../assets/img/icons/unicons/wallet.png" alt="User"
-                                            class="rounded" />
+                                        <span class="avatar-initial rounded bg-label-primary">
+                                            <i class='bx bxs-cart-add' ></i>
+                                        </span>
                                     </div>
                                     <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                         <div class="me-2">
-                                            <small class="text-muted d-block mb-1">Wallet</small>
-                                            <h6 class="mb-0">Mac'D</h6>
+                                            <small class="text-muted d-block mb-1">POI/PKU/23/12/002</small>
+                                            <h6 class="mb-0">PT Podomora Land</h6>
                                         </div>
                                         <div class="user-progress d-flex align-items-center gap-1">
-                                            <h6 class="mb-0">+270.69</h6>
+                                            <h6 class="mb-0">+82.6</h6>
                                             <span class="text-muted">USD</span>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="d-flex mb-4 pb-1">
                                     <div class="avatar flex-shrink-0 me-3">
-                                        <img src="../assets/img/icons/unicons/chart.png" alt="User"
-                                            class="rounded" />
+                                        <span class="avatar-initial rounded bg-label-primary">
+                                            <i class='bx bxs-cart-add' ></i>
+                                        </span>
                                     </div>
                                     <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                         <div class="me-2">
-                                            <small class="text-muted d-block mb-1">Transfer</small>
-                                            <h6 class="mb-0">Refund</h6>
+                                            <small class="text-muted d-block mb-1">POI/PKU/23/12/015</small>
+                                            <h6 class="mb-0">PT Abadi Jaya</h6>
                                         </div>
                                         <div class="user-progress d-flex align-items-center gap-1">
-                                            <h6 class="mb-0">+637.91</h6>
+                                            <h6 class="mb-0">+82.6</h6>
                                             <span class="text-muted">USD</span>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="d-flex mb-4 pb-1">
                                     <div class="avatar flex-shrink-0 me-3">
-                                        <img src="../assets/img/icons/unicons/cc-success.png" alt="User"
-                                            class="rounded" />
+                                        <span class="avatar-initial rounded bg-label-primary">
+                                            <i class='bx bxs-cart-add' ></i>
+                                        </span>
                                     </div>
                                     <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                         <div class="me-2">
-                                            <small class="text-muted d-block mb-1">Credit Card</small>
-                                            <h6 class="mb-0">Ordered Food</h6>
+                                            <small class="text-muted d-block mb-1">POI/PKU/23/12/025</small>
+                                            <h6 class="mb-0">PT Indomaret</h6>
                                         </div>
                                         <div class="user-progress d-flex align-items-center gap-1">
-                                            <h6 class="mb-0">-838.71</h6>
+                                            <h6 class="mb-0">+82.6</h6>
                                             <span class="text-muted">USD</span>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="d-flex mb-4 pb-1">
                                     <div class="avatar flex-shrink-0 me-3">
-                                        <img src="../assets/img/icons/unicons/wallet.png" alt="User"
-                                            class="rounded" />
+                                        <span class="avatar-initial rounded bg-label-primary">
+                                            <i class='bx bxs-cart-add' ></i>
+                                        </span>
                                     </div>
                                     <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                         <div class="me-2">
-                                            <small class="text-muted d-block mb-1">Wallet</small>
-                                            <h6 class="mb-0">Starbucks</h6>
+                                            <small class="text-muted d-block mb-1">POI/PKU/23/12/041</small>
+                                            <h6 class="mb-0">PT Lautan Luas, Tbk</h6>
                                         </div>
                                         <div class="user-progress d-flex align-items-center gap-1">
-                                            <h6 class="mb-0">+203.33</h6>
-                                            <span class="text-muted">USD</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex">
-                                    <div class="avatar flex-shrink-0 me-3">
-                                        <img src="../assets/img/icons/unicons/cc-warning.png" alt="User"
-                                            class="rounded" />
-                                    </div>
-                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                        <div class="me-2">
-                                            <small class="text-muted d-block mb-1">Mastercard</small>
-                                            <h6 class="mb-0">Ordered Food</h6>
-                                        </div>
-                                        <div class="user-progress d-flex align-items-center gap-1">
-                                            <h6 class="mb-0">-92.45</h6>
+                                            <h6 class="mb-0">+82.6</h6>
                                             <span class="text-muted">USD</span>
                                         </div>
                                     </div>
