@@ -67,6 +67,7 @@ Route::resource('invoice', InvoiceController::class);
 Route::resource('invoice-to-sppb', InvoiceToSppbController::class);
 Route::get('/invoice-to-sppb/{sppbItem}/price/{invoice}', [InvoiceToSppbController::class, 'editSppbItemPrice'])->name('editSppbItemPrice');
 Route::put('/invoice-top-sppb/{sppbItem}/price', [InvoiceToSppbController::class, 'updateSppbItemPrice'])->name('updateSppbItemPrice');
+Route::view('test', 'test');
 
 // Route::view('/invoice/item', 'pages.invoice.invoice-item');
 Route::get('/testing', function() {
