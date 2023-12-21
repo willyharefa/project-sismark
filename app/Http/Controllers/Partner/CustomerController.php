@@ -17,7 +17,7 @@ class CustomerController extends Controller
         $sales = SalesUser::whereHas(
             'user', fn($query) => $query->where('branch_id', 1)
         )->get();
-        $customers = Customer::with('branch', 'sales_user')->get();
+        $customers = Customer::with('branch', 'sales_user')->latest()->get();
         return view('pages.partner.customer.customer', compact('sales', 'customers'));
     }
 

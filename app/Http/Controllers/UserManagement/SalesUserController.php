@@ -14,7 +14,7 @@ class SalesUserController extends Controller
      */
     public function index()
     {
-        $salesUsers = SalesUser::with('user')->get();
+        $salesUsers = SalesUser::with('user')->latest()->get();
         $users = User::latest()->get();
         return view('pages.user-management.sales.sales-user', compact('salesUsers', 'users'));
     }
@@ -32,7 +32,23 @@ class SalesUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $request->validate([
+                'user_id' => ['required', 'unique:sales_users'],
+            ],
+            [
+                'user_id.unique' => 'Data sales telah ada, silahkan pilih data lain',
+            ]);
+
+            SalesUser::create([
+                'user_id' => $request->user_id,
+            ]);
+
+            return redirect()->back()->with('success', 'Data berhasil ditambahkan ✅');
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**

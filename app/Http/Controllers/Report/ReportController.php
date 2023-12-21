@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Report;
 use App\Http\Controllers\Controller;
 use App\Models\Inventory\StockMaster;
 use App\Models\Sales\Pricelist;
+use App\Models\Transaction\Invoice;
+use App\Models\Transaction\InvoiceToSppb;
 use App\Models\Transaction\PoInternal;
 use App\Models\Transaction\PoInternalItem;
 use App\Models\Transaction\Quotation;
 use App\Models\Transaction\QuotationItem;
 use App\Models\Transaction\Sppb;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Database\Eloquent\Builder;
 
 class ReportController extends Controller
 {
@@ -69,6 +72,24 @@ class ReportController extends Controller
     public function sppbPrint(Sppb $sppb)
     {
         $pdf = Pdf::loadView('report.print-sppb', ['sppb' => $sppb])->setOption(['dpi' => 150, 'defaultFont' => 'arial, sans-serif'])->setPaper('a4', 'portrait');
+        return $pdf->stream('document.pdf');
+    }
+
+    public function invoicePrint(Invoice $invoice)
+    {
+        $invoiceToSppbData = InvoiceToSppb::where('invoice_id', $invoice->id)->with('sppb', 'branch')->latest()->get();
+        $subTotalTotalPrice = 0;
+        foreach ($invoiceToSppbData as $key => $invoiceToSppb) {
+            foreach ($invoiceToSppb->sppb->flatMap->sppb_item as $data) {
+                $subTotalTotalPrice += $data->total_price;
+            }
+        }
+
+        $ppn = $subTotalTotalPrice * 0.11;
+        $grandTotal = $ppn + $subTotalTotalPrice;
+        
+
+        $pdf = Pdf::loadView('report.print-invoice', ['invoice' => $invoice, 'invoiceToSppbData' => $invoiceToSppbData, 'subTotalTotalPrice' => $subTotalTotalPrice, 'grandTotal' => $grandTotal])->setOption(['dpi' => 150, 'defaultFont' => 'arial, sans-serif'])->setPaper('a4', 'portrait');
         return $pdf->stream('document.pdf');
     }
 }

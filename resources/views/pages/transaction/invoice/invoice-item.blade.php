@@ -72,6 +72,7 @@
             <div class="card-header">
                 <h5>SPPB List</h5>
 
+                @if ($invoice->status_inv == 'draf')
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSPPBList">
                     Tambah SPPB
                 </button>
@@ -125,6 +126,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
 
             </div>
 
@@ -146,11 +148,13 @@
                                 <td>{{ $item->code_sppb }}</td>
                                 <td>{{ $row->created_at }}</td>
                                 <td>
+                                    @if ($invoice->status_inv == 'draf')
                                     <form action="{{ route('invoice-to-sppb.destroy', $row->id) }}" method="POST" class="form-destroy">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach
@@ -165,7 +169,7 @@
         <div class="card mb-4">
             <div class="card-header">
                 <h5>Invoice Item</h5>
-                @if ($sppbUsed !== null && $sppbUsed->isNotEmpty())
+                @if ($sppbUsed !== null && $sppbUsed->isNotEmpty() && $invoice->status_inv == 'draf')
                 <form action="{{ route('invoice.update', $invoice->id) }}" method="POST" class="form-create">
                     @csrf
                     @method('PUT')
@@ -198,7 +202,9 @@
                                 <td>{{ 'Rp ' . number_format($data->price, 2, ",", "."); }}</td>
                                 <td>{{ 'Rp ' . number_format($data->total_price, 2, ",", "."); }}</td>
                                 <td>
+                                    @if ($invoice->status_inv == 'draf')
                                     <a href="{{ route('editSppbItemPrice', ['sppbItem' => $data->id, 'invoice' => $invoice->id]) }}" class="btn btn-sm btn-info">Update</a>
+                                    @endif
                                 </td>
                             </tr>
                             <?php $number++; ?>

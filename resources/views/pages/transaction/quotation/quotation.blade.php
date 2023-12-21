@@ -96,7 +96,7 @@
                                 <td><span class="badge rounded-pill bg-warning">{{ $quo->status_quo }}</span></td>
                                 <td>{{ $quo->user->nickname }}</td>
                                 <td>
-                                    <a class="btn btn-sm btn-info" title="Cetak Penawaran" href="{{ route('quotationPrint', $quo->id) }}"><i class='bx bxs-printer bx-xs'></i></a>
+                                    <a class="btn btn-sm btn-info" title="Cetak Penawaran" href="{{ route('quotationPrint', $quo->id) }}" target="__blank"><i class='bx bxs-printer bx-xs'></i></a>
                                 </td>
                                 <td>
                                     <div class="dropdown">

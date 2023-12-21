@@ -7,6 +7,7 @@
     <meta name="description" content="" />
     <title>{{ $menu_title ?? config('app.name') }}</title>
     @stack('style')
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @Vite(['resources/js/style.js'])
     <link rel="stylesheet" href="{{ Vite::asset('resources/css/loader.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ Vite::asset('resources/assets/img/favicon/mito.png') }}" />

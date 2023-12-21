@@ -51,7 +51,7 @@ class ActivityController extends Controller
             'position_pic'      => $request->position_pic,
             'location'          => $request->location,
             'type_customer'     => $request->type_customer,
-            'user_id'           => 8,
+            'user_id'           => 5,
             'branch_id'         => 1,
         ]);
 

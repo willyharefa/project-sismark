@@ -83,7 +83,7 @@
         <div class="card">
             <h5 class="card-header">Riwayat Aktivitas Saya</h5>
             <div class="card-body">
-                <div class="table-responsive text-nowrap">
+                <div class="table-responsive">
                     <table class="table table-bordered table-sm" id="table" style="width:100%">
                         <thead>
                             <tr>

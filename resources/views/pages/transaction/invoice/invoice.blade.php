@@ -62,7 +62,13 @@
                         <div class="col-md-10">
                             <div class="row g-3">
                                 <div class="col-md-3">
-                                    <input class="form-control" type="text" readonly value="Yudha Satria" name="sales_user_id" title="PIC Sales & Marketing" required>
+                                    {{-- <input class="form-control" type="text" readonly value="Yudha Satria" name="sales_user_id" title="PIC Sales & Marketing" required> --}}
+                                    <select class="form-select select-box-2" name="sales_user_id" required data-placeholder="Pilih sales">
+                                        <option value=""></option>
+                                        @foreach ($salesUsers as $sales)
+                                            <option value="{{ $sales->id }}">{{ $sales->user->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-md">
                                     <input class="form-control" type="text" placeholder="Alamat" title="Masukan alamat pengantaran invoice" name="address_delivery" required>
@@ -120,6 +126,7 @@
                                     <td>{{ 'Rp  '. number_format($invoice->total_inv, 2, ',', '.') }}</td>
                                     <td>
                                         <a href="{{ route('invoice.show', $invoice->id) }}" class="btn btn-sm btn-info">Show</a>
+                                        <a href="{{ route('invoicePrint', $invoice->id) }}" class="btn btn-sm btn-info" target="__blank">Cetak</a>
                                         <button class="btn btn-sm btn-warning">Edit</button>
                                     </td>
                                 </tr>

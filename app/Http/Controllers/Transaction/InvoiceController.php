@@ -22,7 +22,7 @@ class InvoiceController extends Controller
         $customers = Customer::latest()->get();
         $invoices = Invoice::with('customer')->latest()->get();
         $salesUsers = SalesUser::with('user')->latest()->get();
-        return view('pages.transaction.invoice.invoice', compact('customers', 'invoices'));
+        return view('pages.transaction.invoice.invoice', compact('customers', 'invoices', 'salesUsers'));
     }
 
     /**

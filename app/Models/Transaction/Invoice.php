@@ -25,8 +25,8 @@ class Invoice extends Model
         return $this->hasMany(InvoiceToSppb::class, 'id', 'invoice_id');
     }
 
-    public function sales_user(): HasMany
+    public function sales_user(): BelongsTo
     {
-        return $this->hasMany(SalesUser::class, 'id', 'sales_users');
+        return $this->belongsTo(SalesUser::class);
     }
 }

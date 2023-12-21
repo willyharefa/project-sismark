@@ -19,7 +19,7 @@
                                         </div>
                                         <div
                                             class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                            <h4 class="ms-2 mb-0">Rp 23.200.450.000</h4>
+                                            <h4 class="ms-2 mb-0">{{ 'Rp ' . number_format($sumAllInvoice, 0, ",", "."); }}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -38,7 +38,7 @@
                                         </div>
                                         <div
                                             class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                            <h4 class="ms-2 mb-0">Rp 55.454.000</h4>
+                                            <h4 class="ms-2 mb-0">Rp 0</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -217,7 +217,7 @@
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="javascript:void(0);">Lihat Selengkapnya</a>
+                                    <a class="dropdown-item" href="{{ route('activities.index') }}">Lihat Selengkapnya</a>
                                 </div>
                             </div>
                         </div>
@@ -245,7 +245,8 @@
                                 <div class="tab-content p-0 shadow-none">
                                     <div class="tab-pane fade active show" id="nav-pill-tab-pku" role="tabpanel">
                                         <ul class="p-0 m-0">
-                                            <li class="d-flex mb-4">
+                                            @foreach ($activityLatest as $activity)
+                                            <li class="d-flex my-3">
                                                 <div class="avatar flex-shrink-0 me-3 pe-none">
                                                     <span class="avatar-initial rounded bg-label-primary">
                                                         <i class='bx bx-user-circle'></i>
@@ -253,15 +254,15 @@
                                                 </div>
                                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                                     <div class="me-2">
-                                                        <small class="text-muted d-block mb-1">Yudha Satria</small>
-                                                        <h6 class="mb-0">PT Agro Sejahtera</h6>
+                                                        <small class="text-muted d-block mb-1">{{ $activity->user->name }}</small>
+                                                        <h6 class="mb-0">{{ $activity->name_customer }}</h6>
                                                     </div>
                                                     <div class="user-progress d-flex align-items-center gap-1">
-                                                        <span class="text-muted">Mapping</span>
+                                                        <span class="text-muted">{{ $activity->type_action ?? 'No Action' }}</span>
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="d-flex mb-4">
+                                            {{-- <li class="d-flex mb-4">
                                                 <div class="avatar flex-shrink-0 me-3 pe-none">
                                                     <span class="avatar-initial rounded bg-label-primary">
                                                         <i class='bx bx-user-circle'></i>
@@ -324,7 +325,8 @@
                                                         <span class="text-muted">Deals PO</span>
                                                     </div>
                                                 </div>
-                                            </li>
+                                            </li> --}}
+                                            @endforeach
                                         </ul>
                                     </div>
                                     <div class="tab-pane fade" id="nav-pills-tab-mdn" role="tabpanel">
@@ -532,6 +534,17 @@
                 </div>
                 <!--/ Transactions -->
             </div>
+
+            <div class="row g-3">
+                <div class="card">
+                    <div class="card-header">
+                        Product
+                    </div>
+                    <div class="card-body">
+                        {!! $testChart->container() !!}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
@@ -543,4 +556,5 @@
     {{ $productChart->script() }}
     {{ $salesMarketingChart->script() }}
     {{ $marketSalesBranchChart->script() }}
+    {{ $testChart->script() }}
 @endpush

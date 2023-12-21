@@ -11,6 +11,12 @@
             </div>
         @endif
         {{-- End Alert Success --}}
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible text-black" role="alert">
+                {{ $error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
 
         <div class="row g-3">
             <div class="col md-6">
@@ -42,7 +48,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST" class="needs-validation form-create">
+                        <form action="{{ route('sales-user.store') }}" method="POST" class="needs-validation form-create">
                             @csrf
                             @method('POST')
                             <div class="mb-3">

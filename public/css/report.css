@@ -232,5 +232,54 @@ table tbody tr td {
 }
 
 
+#header-cust-quo.invoice-detail th {
+    vertical-align: top !important;
+    line-height: 110%;
+    /* text-wrap: wrap; */
+}
+
+#header-cust-quo.invoice-detail td {
+    vertical-align: top !important;
+}
+
+#header-cust-quo.invoice-detail {
+    width: 700px !important;
+}
+
+.wrapper-list-note li {
+    font-size: 21px;
+}
+
+#table-pay-rek {
+    font-size: 21px;
+}
+
+#table-pay-rek tbody tr th {
+    text-align: left;
+}
+
+#table-pay-rek, #table-pay-rek tbody, #table-pay-rek tbody tr td {
+    border: none !important;
+}
+
+#table-pay-rek tr td:nth-child(1) {
+    width: 150px;
+}
+
+.sum-invoice {
+    margin-top: 20px;
+    width: 42%;
+    margin-left: auto;
+}
+.sum-invoice, .sum-invoice tbody, .sum-invoice tbody tr td, .sum-invoice tbody tr th {
+    border: none !important;
+    font-size: 21px;
+}
+
+.sum-invoice tbody tr th:nth-child(1) {
+    text-align: left;
+}
+
+
 
 /* End Page */
