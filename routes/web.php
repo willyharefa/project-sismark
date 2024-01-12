@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Inventory\StockMasterController;
 use App\Http\Controllers\Partner\CustomerController;
+use App\Http\Controllers\Partner\CustomerPersonaliaController;
 use App\Http\Controllers\Report\ReportController;
 use App\Http\Controllers\Sales\PricelistController;
 use App\Http\Controllers\TaskManagement\ProgressController;
@@ -31,6 +32,9 @@ Route::get('/all-product', [ReportController::class, 'allProducts'])->name('allP
 Route::resource('user', UserController::class);
 Route::resource('sales-user', SalesUserController::class);
 Route::resource('customer', CustomerController::class);
+Route::get('/customer/detail/{customer}', [CustomerController::class, 'detailCustomer'])->name('detailCustomer');
+Route::get('/customer-personalia/{customer}', [CustomerPersonaliaController::class, 'personaliaIndex'])->name('personaliaIndex');
+Route::resource('customer-personalia', CustomerPersonaliaController::class);
 
 
 Route::resource('activities', ActivityController::class);

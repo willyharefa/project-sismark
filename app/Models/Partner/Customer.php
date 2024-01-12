@@ -18,6 +18,9 @@ class Customer extends Model
     use HasFactory;
     protected $guarded = ['id'];
     protected $tables = 'customers';
+    // protected $casts = [
+    //     'foundation_date' => 'datetime'
+    // ];
 
     public function branch(): HasOne
     {
@@ -42,5 +45,15 @@ class Customer extends Model
     public function invoice(): HasMany
     {
         return $this->hasMany(Invoice::class, 'customer_id');
+    }
+
+    public function customer_personalia(): HasMany
+    {
+        return $this->hasMany(CustomerPersonalia::class, 'customer_id');
+    }
+
+    public function customer_branch(): HasMany
+    {
+        return $this->hasMany(CustomerBranch::class, 'customer_id');
     }
 }
