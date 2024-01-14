@@ -14,8 +14,7 @@ class CustomerPersonaliaController extends Controller
      */
     public function index()
     {
-        // dd(Request('customer_id'));
-        return view('pages.partner.customer.personalia.personalia-customer');
+        //
     }
 
     /**
@@ -31,7 +30,18 @@ class CustomerPersonaliaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            CustomerPersonalia::create([
+                'customer_id' => $request->customer_id,
+                'name_pic' => $request->name_pic,
+                'position' => $request->position,
+                'phone_number' => $request->phone_number
+            ]);
+
+            return redirect()->route('personaliaIndex', $request->customer_id)->with('success', 'Data personalia berhasil ditambahkan 🚀');
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     /**
@@ -39,7 +49,7 @@ class CustomerPersonaliaController extends Controller
      */
     public function show(CustomerPersonalia $customerPersonalia)
     {
-        //
+        return view('pages.partner.customer.personalia.personalia-customer-edit', compact('customerPersonalia'));
     }
 
     /**
@@ -55,7 +65,13 @@ class CustomerPersonaliaController extends Controller
      */
     public function update(Request $request, CustomerPersonalia $customerPersonalia)
     {
-        //
+        // dd($request->all());
+        try {
+            $customerPersonalia->update($request->all());
+            return redirect()->route('personaliaIndex', $customerPersonalia->customer_id)->with('success', 'Data personalia berhasil di perbaharui');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**

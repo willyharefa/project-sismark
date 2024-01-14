@@ -17,7 +17,6 @@ use App\Http\Controllers\Transaction\SppbController;
 use App\Http\Controllers\Transaction\SppbItemController;
 use App\Http\Controllers\UserManagement\SalesUserController;
 use App\Http\Controllers\UserManagement\UserController;
-use App\Models\Partner\Customer;
 use App\Models\Transaction\Sppb;
 use Illuminate\Support\Facades\Route;
 
@@ -33,10 +32,14 @@ Route::resource('user', UserController::class);
 Route::resource('sales-user', SalesUserController::class);
 Route::resource('customer', CustomerController::class);
 Route::get('/customer/detail/{customer}', [CustomerController::class, 'detailCustomer'])->name('detailCustomer');
-Route::get('/customer-personalia/{customer}', [CustomerPersonaliaController::class, 'personaliaIndex'])->name('personaliaIndex');
-Route::resource('customer-personalia', CustomerPersonaliaController::class);
+Route::get('/personalia/{customer}', [CustomerPersonaliaController::class, 'personaliaIndex'])->name('personaliaIndex');
+Route::resource('customer-personalia', CustomerPersonaliaController::class, [
+    'parameters' => [
+        'customer-personalia' => 'customer-personalia'
+    ]
+]);
 
-
+Route::resource('user', UserController::class);
 Route::resource('activities', ActivityController::class);
 Route::get('/work-progress/{activity}', [ProgressController::class, 'createProgress'])->name('createProgress');
 Route::resource('progress', ProgressController::class);

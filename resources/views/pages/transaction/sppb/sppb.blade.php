@@ -28,9 +28,7 @@
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Customer</label>
                         <div class="col-sm-10">
-
                             <div class="row g-3">
-
                                 <div class="col-md-4">
                                     <select class="form-select select-box-2" name="customer_id" required data-placeholder="Pilih customer">
                                         <option value=""></option>

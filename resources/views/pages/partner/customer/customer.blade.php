@@ -333,9 +333,8 @@
                                             <div class="dropdown-menu" style="">
                                                 <a href="{{ route('detailCustomer', $customer->id) }}" class="dropdown-item"><i class='bx bx-show-alt me-1'></i>Selengkapnya</a>
                                                 <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="{{ route('personaliaIndex', $customer->id) }}"><i class="bx bx-edit-alt me-1"></i> Edit Customer</a>
-                                                
-                                                <a class="dropdown-item" href=""><i class="bx bx-edit-alt me-1"></i> Edit Personalia</a>
+                                                <a class="dropdown-item" href=""><i class="bx bx-edit-alt me-1"></i> Edit Customer</a>
+                                                <a class="dropdown-item" href="{{ route('personaliaIndex', $customer->id) }}"><i class="bx bx-edit-alt me-1"></i> Edit Personalia</a>
                                                 <a class="dropdown-item" href=""><i class="bx bx-edit-alt me-1"></i> Edit Branch</a>
                                                 <a class="dropdown-item" href=""><i class="bx bx-trash me-1"></i> Hapus</a>  
                                             </div>
