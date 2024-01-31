@@ -42,7 +42,7 @@
                                     <select class="form-select select-box-2" name="customer_id" required data-placeholder="Pilih customer">
                                         <option value=""></option>
                                         @foreach ($customers as $customer)
-                                            <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                            <option value="{{ $customer->id }}">{{ $customer->name_customer }}</option>
                                         @endforeach
                                     </select>
                                 </div>

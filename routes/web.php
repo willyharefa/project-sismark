@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Inventory\StockMasterController;
+use App\Http\Controllers\Marketing\ProjectController;
 use App\Http\Controllers\Partner\CustomerController;
 use App\Http\Controllers\Partner\CustomerPersonaliaController;
 use App\Http\Controllers\Report\ReportController;
@@ -38,8 +39,18 @@ Route::resource('customer-personalia', CustomerPersonaliaController::class, [
         'customer-personalia' => 'customer-personalia'
     ]
 ]);
+Route::view('/branch-customer', 'pages.partner.customer.branch.branch-customer');
 
 Route::resource('user', UserController::class);
+Route::resource('project', ProjectController::class);
+
+Route::view('/test','pages.marketing.project.project-list');
+
+
+
+
+
+
 Route::resource('activities', ActivityController::class);
 Route::get('/work-progress/{activity}', [ProgressController::class, 'createProgress'])->name('createProgress');
 Route::resource('progress', ProgressController::class);

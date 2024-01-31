@@ -19,7 +19,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $customers = Customer::latest()->get();
+        $customers = Customer::all();
         $invoices = Invoice::with('customer')->latest()->get();
         $salesUsers = SalesUser::with('user')->latest()->get();
         return view('pages.transaction.invoice.invoice', compact('customers', 'invoices', 'salesUsers'));

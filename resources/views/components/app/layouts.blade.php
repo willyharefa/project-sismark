@@ -123,6 +123,16 @@
 
                         <ul class="menu-sub">
                             <li class="menu-item">
+                                <a href="{{ route('project.index') }}" class="menu-link">
+                                    <div>Create Prospect</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('project.index') }}" class="menu-link">
+                                    <div>Prospect List</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
                                 <a href="{{ route('activities.index') }}" class="menu-link">
                                     <div>Aktivitas Saya</div>
                                 </a>
