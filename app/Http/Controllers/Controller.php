@@ -106,7 +106,8 @@ class Controller extends BaseController
             return redirect()->back()->with("success", "Yeay, import file anda berhasil dilakukan 🚀");
 
         } catch (Exception $ex) {
-            return redirect()->back()->with('error','💢 Duplicate Entry, data anda tidak dapat diproses pastikan data excel dan sistem tidak sama.');
+            // return redirect()->back()->with('error','💢 Duplicate Entry, data anda tidak dapat diproses pastikan data excel dan sistem tidak sama.');
+            return redirect()->back()->with('error', $ex->getMessage());
         }
 
     }
